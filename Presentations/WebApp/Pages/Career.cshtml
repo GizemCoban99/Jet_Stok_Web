@@ -1,0 +1,35 @@
+﻿@page
+@model WebApp.Pages.CareerModel
+@{
+    ViewData["Title"] = "Bizimle Çalışmak İster Misiniz? - Jet Stok";
+    ViewData["Description"] = "Bizimle çalışmak ister misiniz?";
+    ViewData["Canonical"] = "https://www.jetstok.com/kariyer"; 
+
+}
+<main class="single-project pt-0 style-5">
+<section class="contact section-padding pt-0 pb-80 pt-00 style-6">
+    <div class="section-head text-center top-bg-gray style-4 mb-40">
+        <h1 class="mb-20">  <span class="headerSpanColor">Kariyer</span> </h1>
+        <p>Sizi tanımamız için genel bilgilerinize ihtiyacımız var.</p>
+    </div>
+
+    <div class="container ">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <p>
+                    Bizimle çalışmak ister misiniz? Eğer yazılım sektöründeki tecrübelerinize güveniyorsanız, bir işi bir işten fazlası olarak görürüm diyorsanız ve
+                    bütün enerjimle bu ailenin bir parçası olmak istiyorum diyorsanız başvurularınız <a href="mailto:info@jetstok.com">info@jetstok.com</a> adresine gönderebilirsiniz.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+</main>

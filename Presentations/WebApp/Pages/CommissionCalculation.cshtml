@@ -1,0 +1,353 @@
+﻿@page
+@using CoreLayer.Enum;
+@model WebApp.Pages.CommissionCalculationModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    ViewData["Description"] = Model.pageDescription;
+    ViewData["Canonical"] = Model.pageCanonical; 
+}
+
+ <main class="blog-page style-5">
+<section class="contact section-padding pt-0 pb-80 pt-00 style-6">
+    <div class="section-head text-center top-bg-gray style-4 mb-40">
+        <h1 class="mb-20">  <span class="headerSpanColor">@Model.pageUITitle </span> </h1>
+        <p> @Html.Raw(Model.pageUIContent)</p>
+    </div>
+    <div class="container ">
+        <div class="content pt-80 pb-80">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                 
+                    <form asp-page="CommissionCalculation" id="CommissionCalculationForm" class="form" method="post">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Pazaryeri</label>
+                                    <select class="form-control js-select2 marketplace_id_for_commission" id="marketplace_id_for_commission" asp-for="commissionCalculationForm.marketplace_id">
+                                        <option value="0">Seçim Yapınız</option>
+                                        @foreach (var marketplace in Enum.GetValues<MarketPlaceEnum>())
+                                        {
+                                            <option value="@((byte)marketplace)">@marketplace</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Kategori</label>
+                                    <select handler="SearchCategories" onchange="CategoryCommision()" class="form-control select2-ajax-search-init category_id_for_commission" data-market="">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Ürün Satış Fiyatı (₺)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control moneyformat" id="sale_price_for_commission" placeholder="Ürün Satış Fiyatı">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Ürün Alış Fiyatı (₺)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control moneyformat" id="purchase_price_for_commission" placeholder="Ürün Alış Fiyatı">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">KDV (%)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="kdv_for_commission" placeholder="% KDV">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Komisyon (%)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control commission_rate_for_commission" placeholder="% Komisyon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Kargo Ücreti (₺)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="cargo_price_for_commission" placeholder="Kargo Ücreti">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Kargo Tipi</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-control js-select2" id="cargo_type_for_commission">
+                                            <option value="0">Seçim Yapınız</option>
+                                            <option value="1">Alıcı Öder</option>
+                                            <option value="2">Satıcı Öder</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 ciceksepeti_listing_price" style="display:none;">
+                                <div class="form-group mb-20">
+                                    <label class="form-label">Listeleme Bedeli (₺)</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="listing_price_for_commission" placeholder="Listeleme Bedeli ₺">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2" style="text-align:right;">
+                                <span class="badge badge-warning text-uppercase" style="background-color:#f5aeb1;color:black;padding: 7px;">
+                                    <i class="fas fa-info-circle bttn-info" style="color:black;"></i>
+
+                                    Alış fiyatı ve satış fiyatı KDV dahil olmalıdır.
+                                </span>
+                            </div>
+                            <br />
+                            <div class="col-lg-12 text-center btn-contact mt-3 mb-4">
+                                <input type="button" onclick="CommisionCalculation()" value="Hesapla" class="btn rounded-pill bg-blue4 fw-bold text-white me-4">
+                            </div>
+
+                        </div>
+                    </form>
+                    <section class="community section-padding pt-0 pb-0 style-5 response_div mt-5" style="display:none;">
+                        <div class="container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Komisyon</th>
+                                        <th scope="col">Hizmet Bedeli</th>
+                                        <th scope="col">Kâr Oranı</th>
+                                        <th scope="col">KDV</th>
+                                        <th scope="col">Kâr</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="form-group" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" readonly id="response_commission">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" readonly id="response_service_price">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" readonly id="response_percentage_gain">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" readonly id="response_kdv">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" readonly id="response_price">
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <section class="section-head  style-4">
+        <div class="container" style="text-align: center"> 
+         <a target="_blank" title="Pazaryeri Entegrasyonu - Bilgi Al" href="/pazaryeri-form"><img style="border-radius: 5px; height:auto;" src="/assets/img/jetstokblogcontent.gif" alt="Bilgi Al" /></a>
+        </div>
+    </section>
+    <br/>
+    
+    <div class="section-head  top-bg-gray style-4 mb-40">
+        <div class="container">@Html.Raw(Model.pageUIContent2)</div>
+    </div>
+</section>
+
+
+<section class="community section-padding pt-0 pb-40 style-5">
+    <div class="container">
+        <div class="content">
+            <div class="inf text-center">
+
+                <h2>@Model.marketString Hesaplama Nasıl Yapılır?</h2>
+                <p class="mt-2">
+                    Pazaryerleri tarafından ürün satış fiyatı üzerinden Komisyon ve Hizmet Bedeli adı altında alınan ana giderler kesilmektedir. Sonrasında ise kargo ücretini platform tarafından kesilerek kalan tutar hesabınıza yatırılır. Bu hesaplamada gösterilen KDV tutarını ay sonunda devlete ödersiniz. Kâr ise sizin ürün başı kazanmış olduğunuz net kâr miktarınızdır.
+                </p>
+           <p></p>
+                <h2>@Model.marketString Hesaplama Neden önemlidir?</h2>
+                <p class="mt-2">
+                    Pazaryeri komisyon hesaplama, çevrimiçi platformlarda satıcıların ürünlerini listeledikleri ve satış yaptıkları bir ortamda önemli bir rol oynar. Bu komisyonlar, pazaryerinin sunduğu hizmetler karşılığında talep edilir ve genellikle satışların bir yüzdesi olarak belirlenir. Temel olarak, bir ürünün satış fiyatından belirli bir yüzde kesilerek tahsil edilirler.
+
+                    Pazaryeri komisyonları, genellikle pazaryerinin sunduğu altyapı, trafiği yönlendirme, ödeme işlemleri ve müşteri hizmetleri gibi hizmetleri kapsar. Komisyon oranları, pazaryerine göre değişiklik gösterebilir ve farklı kategoriler veya ürün türleri için farklı olabilir.
+
+                    Komisyon hesaplama genellikle şu basit formülle yapılır: Satış Fiyatı × Komisyon Oranı = Komisyon Tutarı. Bu formül, satış yapıldığında pazaryerine ödenecek komisyon miktarını hesaplamak için kullanılır.
+
+                    Satıcılar genellikle kar marjlarını ve rekabet avantajlarını dikkate alarak ürünlerinin fiyatını belirlerken bu komisyonları hesaba katmalıdır. Ayrıca, farklı pazaryerlerinin komisyon politikalarını karşılaştırmak ve en uygun olanını seçmek önemlidir.
+
+                    Sonuç olarak, pazaryeri komisyon hesaplama, çevrimiçi satıcılar için önemli bir faktördür ve doğru hesaplama ve stratejik fiyatlandırma ile satıcıların karlılığını etkiler.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+ </main>
+
+@section ScriptsPageEnd{
+    
+    <script>
+        $(".marketplace_id_for_commission").on("change", function () {
+            var marketplace_id = $("#marketplace_id_for_commission").find(':selected').val();
+            $('.category_id_for_commission').attr('data-market', marketplace_id);
+            $('#kdv_for_commission').val(18);
+            if (marketplace_id == 10) {
+                $.ajax({
+                    url: '?handler=CiceksepetiListingPrice&marketplace_id=' + marketplace_id,
+                    type: "get",
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    async: false,
+                    beforeSend: function () {
+                    },
+                    success: function (response) {
+                        $(".ciceksepeti_listing_price").show();
+                        $("#listing_price_for_commission").val(response.listing_price);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.responseText);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+
+
+            }
+            else {
+                $(".ciceksepeti_listing_price").hide();
+                $("#listing_price_for_commission").val(0);
+            }
+        });
+
+     
+        $(".select2-ajax-search-init").select2({
+            ajax: {
+                url: function (params) {
+                    if (params.term == undefined || params.term == null)
+                        params.term = '';
+
+                    return '?handler=' + $(this).attr("handler") + "&search=" + params.term + "&marketPlace=" + $(this).attr("data-market");
+                }
+            }
+        });
+
+        $(".js-select2").select2();
+
+
+        function CategoryCommision() {
+            var category_id = $(".category_id_for_commission").find(':selected').val();
+            $.ajax({
+                url: '?handler=CategoryCommission&category_id=' + category_id,
+                type: "get",
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                async: false,
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    console.log(response);
+                    $(".commission_rate_for_commission").val(response);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+        }
+
+        function CommisionCalculation() {
+            var marketplace_id = $(".marketplace_id_for_commission").find(':selected').val();
+            var sale_price = $("#sale_price_for_commission").val();
+            var purchase_price = $("#purchase_price_for_commission").val();
+            var kdv = $("#kdv_for_commission").val();
+            var cargo_price = $("#cargo_price_for_commission").val();
+            var cargo_type = $("#cargo_type_for_commission").val();
+            var commission = $(".commission_rate_for_commission").val();
+
+
+            $.ajax({
+                url: '?handler=CommissionCalculation&marketplace_id=' + marketplace_id + '&commission=' + commission + '&sale_price=' + sale_price + '&purchase_price=' + purchase_price + '&kdv=' + kdv + '&cargo_price=' + cargo_price + '&cargo_type=' + cargo_type,
+                type: "get",
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                async: false,
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".response_div").show();
+                        $("#response_commission").val(response.commission + "₺");
+                        $("#response_service_price").val(response.service_price + "₺");
+                        $("#response_percentage_gain").val(response.percentage_gain + "%");
+                        $("#response_kdv").val(response.kdv_price + "₺");
+                        $("#response_price").val(response.price + "₺");
+                    }
+                    else {
+                        Swal.fire(
+                            'Uyarı!',
+                            "Lütfen boş alanları doldurunuz!",
+                            'error'
+                        );
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+        }
+
+        $("#cargo_type_for_commission").on("change", function () {
+            var value = $("#cargo_type_for_commission").val();
+            if (value == "1") {
+                $("#cargo_price_for_commission").prop("disabled", true);
+                $("#cargo_price_for_commission").val(0);
+            }
+            else if (value != "1") {
+                $("#cargo_price_for_commission").prop("disabled", false);
+            }
+        });
+
+
+    </script>
+    }

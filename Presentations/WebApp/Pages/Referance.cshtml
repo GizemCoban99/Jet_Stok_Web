@@ -1,0 +1,38 @@
+﻿@page
+@model WebApp.Pages.ReferanceModel
+@{
+    ViewData["Title"] = "Değerli Referanslarımız - Jet Stok";
+    ViewData["Description"] = "Jetstok Referanslar sayfamızdan başarılı işletmelerin Jetstok ile elde ettikleri sonuçları inceleyin ve siz de başarı hikayenizi bu sayfa eklemeye hazır olun.";
+    ViewData["Canonical"] = "https://www.jetstok.com/referanslar";
+     
+}
+<main class="single-project pt-0 style-5">
+<main class="portfolio-page style-1">
+    <section class="portfolio-projects section-padding pt-0 pb-0">
+        <div class="section-head text-center mb-50 top-bg-gray style-5">
+            <h1 class="mb-20"> <span class="headerSpanColor">  Referanslarımız </span> </h1>
+            <p>Bizi Tercih Eden Firmalardan Bazıları</p>
+        </div>
+        <div class="container ">
+            
+            <div class="client-logos pb-70">
+                <div class="row align-items-center">
+                    @foreach (var item in Model.list.OrderBy(q => q.order_number).ToList())
+                    {
+                        <div class="col-4 col-lg-4">
+                            <a href="@item.seo_url" title="@item.name" class="img d-block">
+                                @*<img class="img_zoom_two mb-4" src="assets/img/projects/prog/1.jpeg" alt="">*@
+                                <img class="img_zoom_two mb-4" src="/upload/@item.image" alt="@item.name">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+</main>

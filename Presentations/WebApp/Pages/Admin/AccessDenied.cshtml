@@ -1,0 +1,43 @@
+﻿@page
+@model WebApp.Pages.App.AccessDeniedModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr" class="js">
+
+<head> 
+    <meta charset="utf-8">
+    <meta name="author" content="Yetki Hatası">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Yetki Hatası">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <!-- Page Title  -->
+    <title>Yetkiniz Yok</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="/admin_assets/css/dashlite.css?ver=3.0.3">
+    <link id="skin-default" rel="stylesheet" href="/admin_assets/css/theme.css?ver=3.0.3">
+</head>
+
+<body class="nk-body bg-white npc-default pg-error">
+    <div class="nk-app-root"> 
+        <div class="nk-main "> 
+            <div class="nk-wrap nk-wrap-nosidebar"> 
+                <div class="nk-content ">
+                    <div class="nk-block nk-block-middle wide-xs mx-auto">
+                        <div class="nk-block-content nk-error-ld text-center"> 
+                            <h3 class="nk-error-title">You are not authorized!</h3>
+                            <p class="nk-error-text">Please contact your administrator</p>
+                            <a href="/" class="btn btn-lg btn-primary mt-2">Back to homepage</a>
+                        </div>
+                    </div><!-- .nk-block -->
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+    <script src="/admin_assets/js/bundle.js?ver=3.0.3"></script>
+    <script src="/admin_assets/js/scripts.js?ver=3.0.3"></script>
+    <!-- select region modal -->
+   </body>
+</html>

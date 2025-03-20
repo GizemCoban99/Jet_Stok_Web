@@ -1,0 +1,61 @@
+﻿@using EntityLayer.DTOs;
+@model List<GenericValueDTO>
+
+<!-- ====== start faq ====== -->
+<section class="faq section-padding style-4 mb-80">
+    <div class="container">
+        @if (ViewData["Canonical"]!=null && ViewData["Canonical"].ToString() != "https://www.jetstok.com/sikca-sorulan-sorular")
+        {
+            <div class="section-head text-center style-4">
+                <h2 class="mb-30"><span> Sıkça Sorulan  Sorular </span> </h2> 
+            </div>
+        }
+       
+        <div class="content">
+            <div class="faq style-3 style-4">
+                <div class="accordion" id="accordionSt4">
+                    <div class="row gx-5">
+                        <div class="col-lg-12">
+                            @{
+                                var coallepseItemIndex = 0;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                coallepseItemIndex++;
+                                <div class="accordion-item border-bottom rounded-0">
+                                    <b class="accordion-header" id="@("heading"+coallepseItemIndex)">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse" + coallepseItemIndex)" aria-expanded="false" aria-controls="collapse12">
+                                            @Html.Raw(item.name)
+                                        </button>
+                                    </b>
+                                    <div id="@("collapse" + coallepseItemIndex)" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading"+coallepseItemIndex)" data-bs-parent="#accordionSt4">
+                                        <div class="accordion-body">
+                                            @Html.Raw(item.content_1)
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <script type="application/ld+json">
+        {
+          "@@context": "https://schema.org",
+          "@@type": "FAQPage",
+          "mainEntity":  @Html.Raw(Model.FirstOrDefault().FAQGoogle)
+        }
+    </script>
+
+
+
+
+

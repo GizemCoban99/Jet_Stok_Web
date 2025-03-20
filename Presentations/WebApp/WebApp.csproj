@@ -1,0 +1,183 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\ECommerce\**" />
+    <Content Remove="Pages\ECommerce\**" />
+    <EmbeddedResource Remove="Pages\ECommerce\**" />
+    <None Remove="Pages\ECommerce\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helper\FileHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\BusinessLayer\BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\upload\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\IPara\IParaResult.cshtml" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-duotone-900.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-duotone-900.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-light-300.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-light-300.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-brands-400.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-brands-400.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-regular-400.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-regular-400.woff2" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-solid-900.svg" />
+    <None Include="wwwroot\assets\fonts\webfonts_old\fa-solid-900.woff2" />
+    <None Include="wwwroot\assets\img\about\3d_vector2.svg" />
+    <None Include="wwwroot\assets\img\about\about9.svg" />
+    <None Include="wwwroot\assets\img\about\about_15_img.svg" />
+    <None Include="wwwroot\assets\img\about\icon3.svg" />
+    <None Include="wwwroot\assets\img\about\signature.svg" />
+    <None Include="wwwroot\assets\img\choose_us\1.svg" />
+    <None Include="wwwroot\assets\img\choose_us\2.svg" />
+    <None Include="wwwroot\assets\img\choose_us\3.svg" />
+    <None Include="wwwroot\assets\img\choose_us\3d_vector1.svg" />
+    <None Include="wwwroot\assets\img\choose_us\choose9.svg" />
+    <None Include="wwwroot\assets\img\choose_us\choose_lines.svg" />
+    <None Include="wwwroot\assets\img\contact_globe.svg" />
+    <None Include="wwwroot\assets\img\header\3d_vector_head8.svg" />
+    <None Include="wwwroot\assets\img\header\header10_img.svg" />
+    <None Include="wwwroot\assets\img\header\header8_pattern.svg" />
+    <None Include="wwwroot\assets\img\header\header9 - Copy.svg" />
+    <None Include="wwwroot\assets\img\header\header9.svg" />
+    <None Include="wwwroot\assets\img\header\head_15_img - Copy.svg" />
+    <None Include="wwwroot\assets\img\header\head_15_img.svg" />
+    <None Include="wwwroot\assets\img\icons\ch10.svg" />
+    <None Include="wwwroot\assets\img\icons\ch11.svg" />
+    <None Include="wwwroot\assets\img\icons\ch12.svg" />
+    <None Include="wwwroot\assets\img\icons\ch7.svg" />
+    <None Include="wwwroot\assets\img\icons\ch8.svg" />
+    <None Include="wwwroot\assets\img\icons\ch9.svg" />
+    <None Include="wwwroot\assets\img\icons\features\10.svg" />
+    <None Include="wwwroot\assets\img\icons\features\11.svg" />
+    <None Include="wwwroot\assets\img\icons\features\12.svg" />
+    <None Include="wwwroot\assets\img\icons\features\13.svg" />
+    <None Include="wwwroot\assets\img\icons\features\9.svg" />
+    <None Include="wwwroot\assets\img\icons\numbers\num1.svg" />
+    <None Include="wwwroot\assets\img\icons\numbers\num2.svg" />
+    <None Include="wwwroot\assets\img\icons\numbers\num3.svg" />
+    <None Include="wwwroot\assets\img\icons\numbers\num4.svg" />
+    <None Include="wwwroot\assets\img\icons\pay1.svg" />
+    <None Include="wwwroot\assets\img\icons\pay2.svg" />
+    <None Include="wwwroot\assets\img\icons\pay3.svg" />
+    <None Include="wwwroot\assets\img\icons\pay4.svg" />
+    <None Include="wwwroot\assets\img\icons\pay5.svg" />
+    <None Include="wwwroot\assets\img\icons\toggle_dot.svg" />
+    <None Include="wwwroot\assets\img\lang.svg" />
+    <None Include="wwwroot\assets\img\logo.svg" />
+    <None Include="wwwroot\assets\img\logo_light.svg" />
+    <None Include="wwwroot\assets\Integrations\amazon.svg" />
+    <None Include="wwwroot\assets\Integrations\ciceksepeti.svg" />
+    <None Include="wwwroot\assets\Integrations\hepsiburada.svg" />
+    <None Include="wwwroot\assets\Integrations\n11.svg" />
+    <None Include="wwwroot\assets\Integrations\pazarama.svg" />
+    <None Include="wwwroot\assets\Integrations\pttavm.svg" />
+    <None Include="wwwroot\assets\Integrations\trendyol.svg" />
+    <None Include="wwwroot\assets\js\lib\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\assets\js\lib\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\lib\html5shiv.min.js" />
+    <None Include="wwwroot\assets\js\lib\jquery-3.0.0.min.js" />
+    <None Include="wwwroot\assets\js\lib\jquery-migrate-3.0.0.min.js" />
+    <None Include="wwwroot\assets\js\lib\jquery-ui.min.js" />
+    <None Include="wwwroot\assets\js\lib\jquery.counterup.js" />
+    <None Include="wwwroot\assets\js\lib\jquery.fancybox.js" />
+    <None Include="wwwroot\assets\js\lib\jquery.waypoints.min.js" />
+    <None Include="wwwroot\assets\js\lib\lity.js" />
+    <None Include="wwwroot\assets\js\lib\mixitup.min.js" />
+    <None Include="wwwroot\assets\js\lib\pace.js" />
+    <None Include="wwwroot\assets\js\lib\parallax.min.js" />
+    <None Include="wwwroot\assets\js\lib\popper.min.js" />
+    <None Include="wwwroot\assets\js\lib\scrollIt.min.js" />
+    <None Include="wwwroot\assets\js\lib\slider-mob-touch.js" />
+    <None Include="wwwroot\assets\js\lib\steps.js" />
+    <None Include="wwwroot\assets\js\lib\swiper.min.js" />
+    <None Include="wwwroot\assets\js\lib\wow.min.js" />
+    <None Include="wwwroot\assets\js\main.js" />
+    <None Include="wwwroot\assets\marketplaces\pazaryerilogolar.psd" />
+    <None Include="wwwroot\assets\prepros-6.config" />
+    <None Include="wwwroot\assets\scss\common\_global.scss" />
+    <None Include="wwwroot\assets\scss\common\_helper.scss" />
+    <None Include="wwwroot\assets\scss\common\_responsive.scss" />
+    <None Include="wwwroot\assets\scss\common\_variable.scss" />
+    <None Include="wwwroot\assets\scss\elements\market.scss" />
+    <None Include="wwwroot\assets\scss\elements\_404_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_about.scss" />
+    <None Include="wwwroot\assets\scss\elements\_about2_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_about_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_blog.scss" />
+    <None Include="wwwroot\assets\scss\elements\_blog_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\elements\_careers_details.scss" />
+    <None Include="wwwroot\assets\scss\elements\_careers_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_chat-banner.scss" />
+    <None Include="wwwroot\assets\scss\elements\_choose_us.scss" />
+    <None Include="wwwroot\assets\scss\elements\_clients.scss" />
+    <None Include="wwwroot\assets\scss\elements\_collections.scss" />
+    <None Include="wwwroot\assets\scss\elements\_comming_soon_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_community.scss" />
+    <None Include="wwwroot\assets\scss\elements\_contact.scss" />
+    <None Include="wwwroot\assets\scss\elements\_contact_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_download.scss" />
+    <None Include="wwwroot\assets\scss\elements\_faq.scss" />
+    <None Include="wwwroot\assets\scss\elements\_faq_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_features.scss" />
+    <None Include="wwwroot\assets\scss\elements\_footer.scss" />
+    <None Include="wwwroot\assets\scss\elements\_header.scss" />
+    <None Include="wwwroot\assets\scss\elements\_inner_header.scss" />
+    <None Include="wwwroot\assets\scss\elements\_integration.scss" />
+    <None Include="wwwroot\assets\scss\elements\_navbar.scss" />
+    <None Include="wwwroot\assets\scss\elements\_numbers.scss" />
+    <None Include="wwwroot\assets\scss\elements\_portfolio.scss" />
+    <None Include="wwwroot\assets\scss\elements\_portfolio_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_pricing.scss" />
+    <None Include="wwwroot\assets\scss\elements\_process.scss" />
+    <None Include="wwwroot\assets\scss\elements\_product_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_screenshots.scss" />
+    <None Include="wwwroot\assets\scss\elements\_searcing.scss" />
+    <None Include="wwwroot\assets\scss\elements\_section_titles.scss" />
+    <None Include="wwwroot\assets\scss\elements\_services.scss" />
+    <None Include="wwwroot\assets\scss\elements\_services_details_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_services_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_shop_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_side_menu.scss" />
+    <None Include="wwwroot\assets\scss\elements\_signin_page.scss" />
+    <None Include="wwwroot\assets\scss\elements\_sign_up.scss" />
+    <None Include="wwwroot\assets\scss\elements\_single_project.scss" />
+    <None Include="wwwroot\assets\scss\elements\_solutions.scss" />
+    <None Include="wwwroot\assets\scss\elements\_team.scss" />
+    <None Include="wwwroot\assets\scss\elements\_testimonials.scss" />
+    <None Include="wwwroot\assets\scss\elements\_timeline.scss" />
+    <None Include="wwwroot\assets\scss\elements\_top_navbar.scss" />
+    <None Include="wwwroot\assets\scss\one_pages.scss" />
+    <None Include="wwwroot\assets\scss\prepros-6.config" />
+    <None Include="wwwroot\assets\scss\rtl_style.scss" />
+    <None Include="wwwroot\assets\scss\style.scss" />
+    <None Include="wwwroot\sweet-alert2\sweetalert2.min.js" />
+  </ItemGroup>
+
+</Project>

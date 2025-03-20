@@ -1,0 +1,109 @@
+﻿
+<button class="hiddenBtn" id="ModalSuccess" data-bs-toggle="modal" data-bs-target="#modalSuccess">Success</button>
+<button class="hiddenBtn" id="ModalError" data-bs-toggle="modal" data-bs-target="#modalError">Error</button>
+<button class="hiddenBtn" id="ModalLargeError" data-bs-toggle="modal" data-bs-target="#modalLargeError">Error</button>
+<button class="hiddenBtn" id="ModalConfirmDelete" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete">Confirm Delete</button>
+<button class="hiddenBtn" id="ModalConfirmPrice" data-bs-toggle="modal" data-bs-target="#modalConfirmPrice">Confirm Price</button>
+
+<div class="modal fade" tabindex="-1" id="modalSuccess">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-check bg-success"></em>
+                    <h4 class="nk-modal-title" id="modalSuccessTitle">Successful</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="modalSuccessText"></div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-bs-dismiss="modal" id="modalSuccessOkButton">OK</a>
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" style="display:none" id="modalSuccessRedirectButton">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modalError">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                    <h4 class="nk-modal-title" id="modalErrorTitle">Error!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="modalErrorText">Error</div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-bs-dismiss="modal" id="modalErrorOkButton">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modalLargeError">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                    <h4 class="nk-modal-title" id="modalLargeErrorTitle">Error!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="modalLargeErrorText">Error</div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-bs-dismiss="modal" id="modalLargeErrorOkButton">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modalConfirmDelete">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" id="confirmDeleteClose" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                    <h4 class="nk-modal-title">Warning!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text">Are you sure you want to delete it?</div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-bs-dismiss="modal" onclick="ConfirmDeleteOk()" id="modalConfirmRedirectButton">Yes</a>
+                        <a href="#" class="btn btn-lg btn-mw btn-danger" style="margin-left: 25px;" onclick="confirmDeleteClose()" data-bs-dismiss="modal">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modalConfirmPrice">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" id="confirmPriceClose" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                    <h4 class="nk-modal-title">Warning!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="modalConfirmMessage"></div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-bs-dismiss="modal" onclick="ConfirmPriceOk()" id="modalConfirmPriceRedirectButton">Yes</a>
+                        <a href="#" class="btn btn-lg btn-mw btn-danger" style="margin-left: 25px;" onclick="confirmPriceClose()" data-bs-dismiss="modal">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

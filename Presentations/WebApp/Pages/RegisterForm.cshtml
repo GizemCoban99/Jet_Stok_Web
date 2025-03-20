@@ -1,0 +1,97 @@
+﻿@page
+@model WebApp.Pages.RegisterFormModel
+@{
+    ViewData["Canonical"] = "https://www.jetstok.com/kayit-form";
+}
+
+
+<section class="register-form-section">
+
+    <div class="demo-form-container">
+        <div class="demo-form-content">
+            <form asp-page="Form" method="POST" id="register-form" class="demo-form">
+                <div class="demo-form-title">
+                    <h2>Pazaryeri Kayıt Formu</h2>
+                    <p>Jet stok ile Pazaryeri dünyasına adım atmak çok kolay. Formu doldurun, Kayıt Adımlarına başlayın!</p>
+                </div>
+                @if (!Model.SmsAuth)
+                {
+                    <input type="hidden" class="form-control" asp-for="demoForm.PackageId">
+
+                    <div class="form-group">
+                        <input asp-for="demoForm.Name" type="text" class="form-input" id="name" placeholder="Adınız" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="demoForm.Surname" type="text" class="form-input" id="surname" placeholder="Soyadınız" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="demoForm.Email" type="email" class="form-input" id="email" placeholder="E-mail Adresiniz" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="demoForm.Phone" type="text" class="form-input" id ="phoneNumber" placeholder="(555) 555 55 55" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="demoForm.Password" type="text" class="form-input" id="Password" placeholder="Şifreniz" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="demoForm.CompanyName" type="text" class="form-input" id="companyName" placeholder="Firma Adı" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <input readonly autocomplete="off" type="text" class="form-control" placeholder="Telefon" asp-for="demoForm.Phone">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <label class="form-label" for="password">Sms Kodu</label>
+                        </div>
+                        <div class="form-control-wrap">
+                            <input type="hidden" class="form-control" asp-for="SmsAuth">
+                            <input autocomplete="off" type="text" class="form-control" name="smsCode">
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <button type="submit" name="submit" id="submit" class="form-submit">Gönder
+                        </button>
+                </div>
+            </form>
+            <div id="alert" class="alert">
+                <span class="closebtn" onclick="closeAlert()">&times;</span>
+                Lütfen geçerli bir telefon numarası giriniz.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+
+
+    function showAlert() {
+        const alertBox = document.getElementById('alert');
+        alertBox.style.display = 'block';
+    }
+
+    // Alert kapatma fonksiyonu
+    function closeAlert() {
+        const alertBox = document.getElementById('alert');
+        alertBox.style.display = 'none';
+    }
+
+    // Form gönderilmeden önce telefon numarasının doğruluğunu kontrol edelim
+    document.getElementById('register-form').addEventListener('submit', function (event) {
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Sadece rakamları al
+
+        // Telefon numarası doğruluğunu kontrol edelim
+        if (phoneNumber.length !== 10) {
+            showAlert();
+            event.preventDefault(); // Formun gönderilmesini engelleyelim
+        } else {
+
+        }
+    });
+</script>

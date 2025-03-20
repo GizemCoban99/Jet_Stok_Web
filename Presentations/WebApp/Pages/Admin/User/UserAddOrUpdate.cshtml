@@ -1,0 +1,143 @@
+﻿@page
+@model WebApp.Pages.Settings.User.UserAddOrUpdateModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    Layout = "_AdminLayout";
+}
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h4 class="nk-block-title page-title">@Model.pageTitle</h4>
+                </div>
+                <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <li class="nk-block-tools-opt">
+                                    <a href="/PomeloAdmin/users" title="Geri" class="btn btn-sm btn-primary">
+                                        <em class="icon ni ni-arrow-left"></em><span>Geri</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <form action="RoleAddOrUpdate" id="UserAddOrUpdateForm" class="" autocomplete="off">
+                    <div class="row gy-4">
+                        <input type="hidden" class="form-control" asp-for="formModel.id">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Ad *</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.name" placeholder="Ad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Soyad *</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.surname" placeholder="Soyad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Email *</label>
+                                <div class="form-control-wrap">
+                                    @if (Model.formModel.id == 0)
+                                    {
+                                        <input type="text" class="form-control" asp-for="formModel.email" placeholder="Email">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" readonly asp-for="formModel.email" placeholder="Email">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Rol *</label>
+                                <div class="form-control-wrap">
+                                    @*<input type="text" class="form-control" asp-for="formModel.surname" placeholder="Kullanıcı Soyadı">*@
+                                    <select class="form-control" asp-for="formModel.role_id">
+                                        @if (Model.formModel.id == 0)
+                                        {
+                                            <option value="0">Please Select</option>
+                                        }
+                                        @foreach (var item in Model.roles)
+                                        {
+                                            if (Model.formModel.role_id == item.id)
+                                            {
+                                                <option selected value="@item.id">@item.name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.id">@item.name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">TC Kimlik No</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.tc_number" placeholder="TC Kimlik No">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Telefon *</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.phone" placeholder="(555) 555 55 55">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Şifre *</label>
+                                <div class="form-control-wrap">
+                                    <input type="password" class="form-control" asp-for="formModel.new_password" placeholder="Şifre">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row submitBtnLayout">
+                            <div class="col-lg-12 ">
+                                <button type="submit" class="btn btn-secondary">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('formModel_phone').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            if (x[1] < 5 || x[1] > 600) {
+                e.target.value = '';
+            }
+            else {
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? ' ' + x[3] : '');
+            }
+
+        });
+    </script>
+
+}

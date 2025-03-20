@@ -1,0 +1,168 @@
+﻿@page
+@model WebApp.Pages.CampaignDetailModel
+@{
+    var domain = "";
+#if DEBUG
+    domain = $"https://www.jetstok.com";
+#endif
+    var image = $"{domain}/upload/{Model.data.image}";
+    var bannerImage = $"{domain}/upload/{Model.data.image_banner}";
+    ViewData["Title"] = Model.data.name+" Jet Stok ";
+    ViewData["Description"] = Model.data.summary;
+}
+
+<main class="campaign-page style-5">
+    <section class="all-news section-padding pt-0 blog bg-transparent style-5">
+        <div class="color-000 text-center" style="background: var(--color-main)">
+            <div class="campaign-head-content">
+                <img src="@bannerImage" />
+                @* <div class="campaign-head-title">
+                    <h1 class="text-white">@Model.data.name</h1>
+                    <span class="fs-5" style="color:var(--color-orange3)">@Model.data.summary</span> 
+                    
+                </div>
+
+                <div class="campaign-head-image">
+                        <img src="@image" alt="@Model.data.name"/>
+                </div> *@
+                
+            </div>
+         
+        </div>
+       
+        <div class="container">
+            <div class="row gx-4 gx-lg-5 mt-50">
+                <div class="col-lg-8">
+                    <div>
+                        <h1 class="">@Model.data.name</h1>
+                        <span class="fs-4" style="color:var(--color-orange3)">@Model.data.summary</span>
+                    </div>
+                    
+
+                    <div class="campaign-content-info">
+                        @Html.Raw(Model.data.content_1)
+                    </div>
+
+                    <div class="campaign-content-timer mt-50">
+                        @Html.Raw(Model.data.content_2)
+                    </div>
+
+                    <div class="campaign-content-feature mt-50">
+                        @Html.Raw(Model.data.content_3)
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="style-5 ps-lg-5 mt-5 mt-lg-0 campaign-col-right">
+
+                        @Html.Raw(Model.data.content_4)
+                      
+                        <div class="social-links text-center">
+                            <h2 class="title mb-20 text-uppercase">
+                                Sosyal Medya
+                            </h2>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Instagram" href="https://instagram.com/jet_stok?igshid=YmMyMTA2M2Y=" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Facebook" href="https://www.facebook.com/jetstokcom?mibextid=ZbWKwL" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Linkedin" href="https://www.linkedin.com/company/jet-stok/" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@* Sıkça Sorulan Sorular Start *@
+<section class="faq section-padding style-4 bg-gray">
+    <div class="container">
+        <div class="section-head text-center style-4">
+            <h2 class="mb-30"> <span>Sıkça Sorulan Sorular</span></h2>
+        </div>
+        <div class="content">
+            <div class="faq style-3 style-4">
+                <div class="accordion" id="accordionSt4">
+                    <div class="row gx-5">
+                        <div class="col-lg-12">
+
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="@("heading1")">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse1")" aria-expanded="false" aria-controls="collapse12">                                     
+                                        @Html.Raw(Model.data.dynamic_title_1)
+                                    </button>
+                                </h2>
+                                <div id="@("collapse1")" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading1")" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">                                      
+                                        @Html.Raw(Model.data.dynamic_description_1)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="@("heading2")">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse2")" aria-expanded="false" aria-controls="collapse12">
+                                        @Html.Raw(Model.data.dynamic_title_2)                                      
+                                    </button>
+                                </h2>
+                                <div id="@("collapse2")" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading2")" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">                                       
+                                        @Html.Raw(Model.data.dynamic_description_2)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="@("heading3")">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse3")" aria-expanded="false" aria-controls="collapse12">
+                                        @Html.Raw(Model.data.dynamic_title_3)
+                                    </button>
+                                </h2>
+                                <div id="@("collapse3")" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading3")" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        @Html.Raw(Model.data.dynamic_description_3)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="@("heading4")">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse4")" aria-expanded="false" aria-controls="collapse12">
+                                        @Html.Raw(Model.data.dynamic_title_4)
+                                    </button>
+                                </h2>
+                                <div id="@("collapse4")" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading4")" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        @Html.Raw(Model.data.dynamic_description_4)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="@("heading5")">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse5")" aria-expanded="false" aria-controls="collapse12">
+                                        @Html.Raw(Model.data.dynamic_title_5)
+                                    </button>
+                                </h2>
+                                <div id="@("collapse5")" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading5")" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        @Html.Raw(Model.data.dynamic_description_5)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@* Sıkça Sorulan Sorular End *@
+

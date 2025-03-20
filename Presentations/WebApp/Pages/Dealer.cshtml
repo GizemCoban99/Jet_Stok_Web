@@ -1,0 +1,100 @@
+﻿@page
+@model WebApp.Pages.DealerModel
+@{
+    ViewData["Title"] = "Bayilerimiz ve İletişim Bilgilerimiz - Jet Stok";
+    ViewData["Description"] = "Jetstok Bayilerini incelemek için hemen tıkla. Güçlü iş ortakları ağı ile Jetstok hizmetlerine daha kolay erişim sağlayın ve işbirliği fırsatlarından yararlanın";
+    ViewData["Canonical"] = "https://www.jetstok.com/bayilerimiz";
+ 
+}
+ <main class="single-project pt-0 style-5">
+<main class="portfolio-page style-1">
+
+    <section class="contact section-padding pt-0 pb-80 pt-50 style-6">
+        <div class="section-head text-center style-4 mb-40">
+            <small class="title_small">Jet Stok</small>
+            <h2 class="mb-20">Bayilik Başvurusu İçin <br /><span>  Formu Doldurabilirsiniz.</span> </h2>
+        </div>
+        <div class="container ">
+            <div class="content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <form asp-page-handler="Contact" class="form" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" asp-for="contactForm.Name" class="form-control" placeholder="Adı Soyad" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" asp-for="contactForm.Email" class="form-control" placeholder="Eposta Adresi" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="number" asp-for="contactForm.Phone" class="form-control" placeholder="Telefon Numarası" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" asp-for="contactForm.Title" class="form-control" placeholder="Bayi İsmi" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea rows="5" asp-for="contactForm.Description" class="form-control" placeholder="Size nasıl yardımcı olabiliriz?"></textarea>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-lg-12 text-center btn-contact" style="margin-top:25px;">
+                                    <input type="submit" value="Sizi Arayalım" class="btn rounded-pill bg-blue4 fw-bold text-white me-4">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @*<img src="/assets/img/icons/contact_a.png" alt="" class="contact_a">
+                <img src="/assets/img/icons/contact_message.png" alt="" class="contact_message">*@
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-projects section-padding pt-0 pb-0">
+        <div class="section-head text-center top-bg-gray mb-80 style-5">
+            <h1 class="mb-20"><span class="headerSpanColor">Bayilerimiz </span> </h1>
+            @*<p>Jet Stok'un avantajlı güncel kampanyalarını buradan takip edebilirsiniz.</p>*@
+        </div>
+        <div class="container">
+            <section class="portfolio style-1">
+                <div class="content">
+                    <div class="row mix-container">
+                        @foreach (var item in Model.list.OrderBy(q => q.id).ToList())
+                        {
+                            <div class="col-lg-4 mix security consultation">
+                                <div class="portfolio-card mb-50">
+                                    <a target="_blank" title="@item.name" href="javascript:;">
+                                        <div class="img">
+                                            @*<img class="img_zoom" src="assets/img/projects/prog/1.jpeg" alt="">*@
+                                            <img class="img_zoom_two mb-4" src="/upload/@item.image" alt="@item.name">
+                                        </div>
+                                        @* <div class="info campaign-title">
+                                    <h6>
+                                    @item.CampaignTitle
+                                    </h6>
+                                    </div>*@
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+</main>
+
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+ </main>

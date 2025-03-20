@@ -1,0 +1,100 @@
+﻿@page
+@model WebApp.Pages.BuyPackageModel;
+@{
+    ViewData["Title"] = Model.pageTitle;
+
+}
+<section class="buy-form-section">
+    <div class="demo-form-container">     
+        <div class="demo-form-content">           
+            <form action="StartCheckout" id="StartCheckoutForm" autocomplete="on">
+                <div class="demo-form-title">
+                    <h2>@Model.pageTitle</h2>
+                </div>              
+                <input type="hidden" class="form-control" asp-for="formModel.guid">
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="default-01">Kart Üzerindeki İsim</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" asp-for="formModel.Name" placeholder="Jhon Doe" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="default-01">Kart Numarası </label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" asp-for="formModel.CardNumber" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="default-01">Son Kullanma Tarihi</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" placeholder="12/30" asp-for="formModel.ExpirationDate" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="default-01">Güvenlik Kodu*</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" asp-for="formModel.SecurityCode" placeholder="CVV" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button onclick="startCheckout()" type="button" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2">Ödemeyi Başlat</button>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.PaymentError))
+                {
+                    <div class="nk-block-title p-2">
+                        <label class="title">Ödeme Hatası</label>
+                        <p class="sub-text" style="color:red">@Model.PaymentError</p>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="checkout-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content get_direction_modal_bg">
+                <div class="text-right"><a class="fa fa-times white normal12" data-dismiss="modal"> close</a></div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function startCheckout() {
+        var formData = new FormData();
+        var postData = $('#StartCheckoutForm').serializeArray();
+        postData.forEach(q => formData.append(q.name, q.value));
+        $.ajax({
+            url: "?handler=StartCheckout",
+            type: "POST",
+            data: formData,
+            headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+            success: function (response) {
+                if (response.isSuccess) {
+                    $('#checkout-modal').find('.modal-body').html(response.data);
+                }
+                else {
+                    ShowErrorModal({ title: "Hata", errors: response.messages })
+                }
+            },
+            error: function (jqXHR, textStatus, textStatus) {
+                alert(jqXHR + textStatus + textStatus);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+</script>

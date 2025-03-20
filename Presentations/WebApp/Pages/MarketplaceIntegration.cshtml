@@ -1,0 +1,42 @@
+﻿@page
+@model WebApp.Pages.MarketplaceIntegrationModel
+@{
+    ViewData["Title"] = Model.data.seo_title;
+    ViewData["Description"] = Model.data.seo_description;
+    ViewData["Canonical"] = "https://www.jetstok.com/entegrasyonlar/" + Model.data.seo_url;
+ 
+}
+
+@section HeaderContents{
+}
+
+ <main class="single-project pt-0 style-5">
+<section class="blog style-6 pb-5">
+    <div class="section-head  text-center style-5 mb-80 top-bg-gray">
+        <h1 class="mb-20">  <span class="headerSpanColor">@Model.data.name</span> </h1>
+        <p>@Html.Raw(Model.data.summary)</p>
+    </div>
+    <div class="container ">
+        <div class="content">
+            <div class="row">
+                @foreach (var item in Model.integrationsList.OrderBy(q=>q.order_number).ToList())
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-card">
+                            <a href="/@item.seo_url" title="@item.name" class="img img-cover d-block pb-4">
+                                <img src="/images/loading-gif.gif" data-src="/upload/@item.image_description" alt="@Html.Raw(item.name)">
+                            </a>
+                            <p class="info integration-head text-center">
+                                <span class="blog-title ">
+                                    <a href="/@item.seo_url" title="@Html.Raw(item.name)">@Html.Raw(item.name)</a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+ </main>

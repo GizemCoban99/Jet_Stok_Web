@@ -1,0 +1,22 @@
+﻿@page
+@model WebApp.Pages.OrderSuccessModel
+@{
+}
+<section class="community section-padding pt-0 pb-40 style-5">
+    <div class="container">
+        <div class="content justify-content-center">
+            <div class="inf text-center">
+                <h2>Ödemeniz alınmıştır</h2>
+                <p class="mt-2">
+                    Sipariş numaranızı kaydetmek isteyebilirsiniz.
+                    Sipariş No : @Model.order_id
+                </p>
+                <p class="mt-2">
+                    Hesabınız oluşturulmuştur. <a href="https://app.jetstok.com/">Hesabınıza panel üzerinden giriş yapabilirsiniz.</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />

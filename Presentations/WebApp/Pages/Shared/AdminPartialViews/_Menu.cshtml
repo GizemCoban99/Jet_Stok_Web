@@ -1,0 +1,77 @@
+﻿@using EntityLayer.DTOs;
+@using Newtonsoft.Json;
+@{
+    var permissions = JsonConvert.DeserializeObject<List<PermissionDTO>>(ViewData["Permissions"].ToString());
+    var genericTypes = JsonConvert.DeserializeObject<List<GenericTypeDTO>>(ViewData["GenericTypes"].ToString());
+}
+<div class="nk-sidebar-content">
+    <div class="nk-sidebar-menu" data-simplebar>
+        <ul class="nk-menu">
+            <li class="nk-menu-item">
+                <a href="/PomeloAdmin/dashboard" class="nk-menu-link">
+                    <span class="nk-menu-icon"><em class="icon ni ni-home"></em></span>
+                    <span class="nk-menu-text">Dashboard</span>
+                </a>
+            </li>
+
+
+            @if (genericTypes.Count > 0)
+            {
+                <li class="nk-menu-heading">
+                    <h6 class="overline-title text-primary-alt">İçerik</h6>
+                </li>
+
+                <li class="nk-menu-item has-sub">
+                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                        <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                        <span class="nk-menu-text">İçerik</span>
+                    </a>
+                    <ul class="nk-menu-sub">
+                        @foreach (var item in genericTypes)
+                        {
+                            <li class="nk-menu-item">
+                                <a href="/PomeloAdmin/generic-values/@item.id" class="nk-menu-link" title="@item.type_name"><span class="nk-menu-text">@item.type_name</span></a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            @if (permissions.Any(q => q.id == 1) || permissions.Any(q => q.id == 2))
+            {
+                <li class="nk-menu-heading">
+                    <h6 class="overline-title text-primary-alt">Sistem Ayarları</h6>
+                </li>
+
+                <li class="nk-menu-item has-sub">
+                    <a href="#" title="Settings" class="nk-menu-link nk-menu-toggle">
+                        <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                        <span class="nk-menu-text">Settings</span>
+                    </a>
+                    <ul class="nk-menu-sub">
+                        @if (permissions.Any(q => q.id == 1))
+                        {
+                            <li class="nk-menu-item">
+                                <a href="/PomeloAdmin/users" title="Kullanıcılar" class="nk-menu-link"><span class="nk-menu-text">Kullanıcılar</span></a>
+                            </li>
+                        }
+
+                        @if (permissions.Any(q => q.id == 2))
+                        {
+                            <li class="nk-menu-item">
+                                <a href="/PomeloAdmin/roles" title="Roller" class="nk-menu-link"><span class="nk-menu-text">Roller</span></a>
+                            </li>
+                        }
+
+                        @if (permissions.Any(q => q.id == 5))
+                        {
+                            <li class="nk-menu-item">
+                                <a href="/PomeloAdmin/generic-types" title="Data Tipleri" class="nk-menu-link"><span class="nk-menu-text">Data Tipleri</span></a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

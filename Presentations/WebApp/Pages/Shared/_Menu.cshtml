@@ -1,0 +1,358 @@
+﻿@model List<EntityLayer.DTOs.GenericValueDTO>
+
+@*<div class="top-navbar style-4">
+    <div class="container">
+        <div class="content text-white">
+
+            <div class="row">
+                <div class="col-md-8 mobile-center">
+                    <a style="margin-right: 25px;" title="Bize Ulaşın" href="tel:05307383242"><i class="fa fa-phone mr-2"></i> 0530 738 32 42</a>
+                    
+                    <a href="javascript:void(0);" title="Jet Stok Whatsapp" onclick="location.href ='https://api.whatsapp.com/send?phone=902167065538&amp;text=Merhaba&nbsp;Bilgi&nbsp;Almak&nbsp;İstiyorum.';"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+                </div>
+                <div class="col-md-4 mobile-center head-social">
+                    </div>
+            </div>
+           
+        </div>
+    </div>
+</div>*@
+
+<nav class="navbar navbar-expand-lg navbar-light style-4 nav-scroll">
+    <div class="container">
+        <a class="navbar-brand" title="Jet Stok" href="/">
+            <img src="/assets/img/logo.svg" alt="E-Ticaret Pazaryeri Entegrasyonu">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                @*  <li class="nav-item">
+                <a class="nav-link" href="#">
+                Özellikler
+                </a>
+                </li>*@
+               @*  <li class="nav-item">
+                    <a class="nav-link" title="E-Ticaret" href="/e-ticaret">
+                        E-Ticaret
+                    </a>
+                </li> *@
+                <li class="nav-item">
+                    <a class="nav-link" title="Pazaryeri Entegrasyonu Özellikler" href="/ozellikler">
+                        Özellikler
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" title="Pazaryeri Entegrasyon Fiyatları" href="/fiyatlandirma">
+                        Fiyatlar
+                    </a>
+                </li>           
+                <li class="nav-item dropdown mobile-hide">
+                    <a class="nav-link dropdown-toggle" title="Pazayeri Entegrasyonu" href="#" id="navbarDropdown2" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Entegrasyonlar <!--burdaki dropddown içeriği değişecek-->
+                    </a>
+                    <ul class="dropdown-menu menu-width-integration" aria-labelledby="navbarDropdown2">
+                        <li style="display:inline-block; width:100%; margin-bottom:5px;">
+                            <ul class="sub-mega-menu" style="margin: 0; padding: 0;">
+                                <div class="dropdown-content">
+                                    <div class="category">
+                                        <h4>ENTEGRASYON ÇÖZÜMLERİMİZ</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="/entegrasyonlar/pazaryeri-entegrasyonlari" class="integration-link" title="Pazaryeri Entegrasyonları">
+                                                <div class="integration-text">Pazaryeri Entegrasyonları<span class="sub-texxt">Tüm Pazaryerleriniz Tek Ekranda</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/e-fatura-entegrasyonlari" class="integration-link" title="E-fatura Entegrasyonları">
+                                                    <div class="integration-text">E-fatura entegrasyonları<span class="sub-texxt">Bir Tuşla Faturalandırın</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/web-sitesi-entegrasyonlari" class="integration-link" title="E-Ticaret Entegrasyonları">
+                                                    <div class="integration-text">E-ticaret Entegrasyonları<span class="sub-texxt">Web Siteniz Tek Ekranda</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/xml-entegrasyonu" class="integration-link" title="XML Entegrasyonu">
+                                                    <div class="integration-text">XML Entegrasyonu<span class="sub-texxt">XML İle Ürünleriniz Güncel Kalsın</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/kargo-entegrasyonlari" class="integration-link" title="Kargo Entegrasyonları">
+                                                    <div class="integration-text">Kargo Entegrasyonları<span class="sub-texxt">Tüm Kargolar Tek Ekranda</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/fulfilment-entegrasyonlari" class="integration-link" title="Fulfilment Entegrasyonları">
+                                                    <div class="integration-text">Fulfilment Entegrasyonları<span class="sub-texxt">Tüm Süreçleriniz Tek Ekranda</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/erp-entegrasyonlari" class="integration-link" title="ERP Entegrasyonları">
+                                                    <div class="integration-text">ERP Entegrasyonları<span class="sub-texxt">Stok ve Fiyatlarınız Güncel Kalsın</span></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/entegrasyonlar/muhasebe-entegrasyonlari" class="integration-link" title="Muhasebe Entegrasyonları Entegrasyonları">
+                                                    <div class="integration-text">Muhasebe Entegrasyonları <span class="sub-texxt">Siparişleriniz Anında Faturalansın</span></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr />
+                                    <div class="category">
+                                        <h4>EN ÇOK TERCİH EDİLEN ENTEGRASYONLAR</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="/trendyol-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/trendyol.png" class="integration-icon" alt="Trenyol Entegrasyonu">Trendyol Entegrasyonu</a>
+                                            </li>
+                                            <li>
+                                                <a href="/hepsiburada-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/hepsiburada.png" class="integration-icon" alt="Hepsiburada Entegrasyonu">Hepsiburada Entegrasyonu</a>
+                                            </li>
+                                            <li>
+                                                <a href="/n11-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/n11.png" class="integration-icon" alt="N11 Entegrasyonu">N11 Entegrasyonu</a>
+                                            </li>
+                                            <li>
+                                                <a href="/amazon-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/amazon.png" class="integration-icon" alt="Amazon Türkiye Entegrasyonu">Amazon Türkiye Entegrasyonu</a>
+                                            </li>
+                                            <li>
+                                                <a href="/etsy-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/etsy.png" class="integration-icon" alt="Etsy Entegrasyonu">Etsy Entegrasyonu</a>
+                                            </li>
+                                            <li>
+                                                <a href="/ebay-entegrasyonu" class="integration-link"><img src="~/assets/marketplaces/ebay.png" class="integration-icon" alt="Ebay Entegrasyonu">Ebay Entegrasyonu</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="button-container">
+                                        <a href="/Integration" class="full-width-button">Tüm Entegrasyonları İncele</a>
+                                    </div>
+
+                                </div>
+
+                                @* <div class="row">
+                                    <a href="/entegrasyonlar/pazaryeri-entegrasyonlari" title="PAZARYERİ ENTEGRASYONLARI"><img src="~/assets/img/marketplace_menu.png" alt="PAZARYERİ ENTEGRASYONLARI" style="width: 2.5em; height:auto; vertical-align: middle;" /><span>Pazaryeri Entegrasyonları</span></a>
+                                    <div class="container mt-0 p-0">
+                                        <div class="row no-gutters">
+                                                @foreach (var item in Model.Where(x => x.parent_1_id == 183).ToList())
+                                                {
+                                                <div class="col-6 col-sm-6 col-md-6" style="margin-bottom: 10px;">
+                                                    <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu", "").Replace("-", "") + ".png")" alt="@item.name" /> @item.name.Replace(" Pazaryeri", "")</a>
+                                                    </div>
+                                                }
+                                            </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <a href="/entegrasyonlar/muhasebe-entegrasyonlari" title="MUHASEBE ENTEGRASYONLARI"><img src="~/assets/img/muhasebe_menu.png" alt="MUHASEBE ENTEGRASYONLARI" style="width: 2.5em; height:auto; vertical-align: middle;" /><span>Muhasebe Entegrasyonları</span></a>
+                                    <div class="container mt-0 p-0">
+                                        <div class="row no-gutters">
+                                        @foreach (var item in Model.Where(x => x.parent_1_id == 184).ToList())
+
+                                        {
+                                                <div class="col-6 col-sm-6 col-md-6" style="margin-bottom: 10px;">
+                                            <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu", "").Replace("-", "") + ".png")" alt="@item.name" />@item.name.Replace(" Pazaryeri", "")</a>
+                                            </div>
+                                        }
+                                        </div>
+                                    </div>
+                                </div> *@
+                                @* <hr />
+                                <div class="row">
+                                        <a href="/entegrasyonlar/web-sitesi-entegrasyonlari" title="WEB SİTESİ ENTEGRASYONLARI"><!--<img src="~/assets/img/muhasebe_menu.png" alt="WEB SİTESİ ENTEGRASYONLARI" />--><span>Web Sitesi Entegrasyonları</span></a>
+                                    <div class="container mt-0 p-0">
+                                        <div class="row no-gutters">
+                                        @foreach (var item in Model.Where(x => x.parent_1_id == 212).ToList())
+
+                                        {
+                                                <div class="col-6 col-sm-6 col-md-6" style="margin-bottom: 10px;">
+                                            <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu", "").Replace("-", "") + ".png")" alt="@item.name" />@item.name.Replace(" Pazaryeri", "")</a>
+                                                </div>
+                                        }
+                                        </div>
+                                    </div>
+                                </div> *@
+                                <!--
+                                <li>
+                                    <a href="/entegrasyonlar/pazaryeri-entegrasyonlari" title="PAZARYERİ ENTEGRASYONLARI"><img src="~/assets/img/marketplace_menu.png" alt="PAZARYERİ ENTEGRASYONLARI" /><span>Pazaryeri <small>Entegrasyonları</small></span></a>
+                                    @foreach (var item in Model.Where(x => x.parent_1_id == 183).ToList())
+                                    {
+                                        <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu","").Replace("-","")+".png")" alt="@item.name" /> @item.name.Replace(" Pazaryeri","")</a>
+                                    }
+                                </li>
+                                <li>
+                                    <a href="/entegrasyonlar/muhasebe-entegrasyonlari" title="MUHASEBE ENTEGRASYONLARI"><img src="~/assets/img/muhasebe_menu.png" alt="MUHASEBE ENTEGRASYONLARI" /><span>Muhasebe <small>Entegrasyonları</small></span></a>
+                                    @foreach (var item in Model.Where(x => x.parent_1_id == 184).ToList())
+                                    {
+                                        <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu","").Replace("-","")+".png")" alt="@item.name" />@item.name.Replace(" Pazaryeri", "")</a>
+                                    }
+                                </li>
+
+                                <li>
+                                    <a href="/entegrasyonlar/web-sitesi-entegrasyonlari" title="WEB SİTESİ ENTEGRASYONLARI"><img src="~/assets/img/muhasebe_menu.png" alt="WEB SİTESİ ENTEGRASYONLARI" /><span>Web Sitesi <small>Entegrasyonları</small></span></a>
+                                    @foreach (var item in Model.Where(x => x.parent_1_id == 212).ToList())
+                                    {
+                                        <a href="/@item.seo_url" class="sub-menu-list" title="@item.name"><img style="height:22px;" src="/images/loading-gif.gif" data-src="/assets/marketplaces/@(item.seo_url.Replace("-entegrasyonu","").Replace("-","")+".png")" alt="@item.name" />@item.name.Replace(" Pazaryeri", "")</a>
+                                    }
+                                </li>
+                                -->
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+             @*    <li class="nav-item dropdown mobile-hide">
+                    <a class="nav-link dropdown-toggle" title="E-Ticaret Pazaryeri Entegrasyon Fiyatları" href="#" id="navbarDropdown2" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Fiyatlar
+                    </a>
+                    <ul class="dropdown-menu menu-width" aria-labelledby="navbarDropdown1">
+                        <li style="display:inline-block; width:100%;">
+                            <ul class="sub-mega-menu">
+                                <li>
+                                    <a href="/fiyatlandirma" title="Pazaryeri Entegrasyon Fiyatları"><img src="~/assets/img/entegrasyon.png" alt="Pazaryeri Entegrasyon Fiyatları" /><span>Pazaryeri Entegrasyon</span></a>
+                                </li>
+                                <li>
+                                    <a href="/e-ticaret-fiyatlari" title="E-Ticaret Paket Fiyatları"><img src="~/assets/img/et-img.png" alt="E-Ticaret Paket Fiyatları" /><span>E-Ticaret</span></a>
+                                </li> 
+                            </ul>
+                        </li>
+                    </ul>
+                </li> *@
+
+               <li class="nav-item mobile-show">
+                    <a class="nav-link" href="/kampanyalar" title="Jet Stok Kampanyalar">
+                        Kampanyalar
+                    </a>
+                </li>
+
+                @* <li class="nav-item mobile-show">
+                    <a class="nav-link" href="/bayilik-sistemi" title="Jet Stok Bayilik Sistemi">
+                        Bayilik
+                    </a>
+                </li> *@
+
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" href="/referanslar" title="Jet Stok Referanslar">
+                        Referanslar
+                    </a>
+                </li>
+
+
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" href="/komisyon-hesaplama" title="Jet Stok Komisyon Hesaplama">
+                        Komisyon Hesaplama
+                    </a>
+                </li>
+
+
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" title="PAZARYERİ ENTEGRASYONLARI" href="/entegrasyonlar/pazaryeri-entegrasyonlari">
+                        Pazaryeri Entegrasyonları
+                    </a>
+                </li>
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" title="MUHASEBE ENTEGRASYONLARI" href="/entegrasyonlar/muhasebe-entegrasyonlari">
+                        Muhasebe Entegrasyonları
+                    </a>
+                </li>
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" title="WEB SİTESİ ENTEGRASYONLARI" href="/entegrasyonlar/web-sitesi-entegrasyonlari">
+                        Web Sitesi Entegrasyonları
+                    </a>
+                </li>
+                
+@* 
+                <li class="nav-item mobile-show">
+                    <a class="nav-link" href="/xml-entegrasyonlar" title="XML İş Ortakları">
+                        XML İş Ortakları
+                    </a>
+                </li> *@
+
+               
+                <li class="nav-item dropdown mobile-hide">
+                    <a class="nav-link dropdown-toggle" title="Pazayeri Entegrasyonu" href="#" id="navbarDropdown2" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Keşfet
+                        @*<small class="hot alert-danger text-danger">Yeni</small>*@
+                    </a>
+                    <ul class="dropdown-menu menu-width" aria-labelledby="navbarDropdown1">
+                        <li style="display:inline-block; width:100%;">
+                            <ul class="sub-mega-menu">
+                                <li>
+                                    <a href="/kampanyalar" title="Jet Stok Kampanyalar"><img src="~/assets/img/kampanyalar.png" alt="Jet Stok Kampanyalar" /><span>Kampanyalar</span></a>
+                                </li>
+                               @*  <li>
+                                    <a href="/referanslar" title="Jet Stok Referanslar"><img src="~/assets/img/referans.png" alt="Jet Stok Referanslar" /><span>Referanslar</span></a>
+                                </li> *@
+                               @*  <li>
+                                    <a href="/xml-entegrasyonlar" title="XML İş Ortakları"><img src="~/assets/img/is-ortaklari.png" alt="XML İş Ortakları" /><span>XML İş Ortakları</span></a>
+                                </li> *@
+                               
+                                <li>
+                                    <a href="/komisyon-hesaplama" title="Jet Stok Komisyon Hesaplama"><img src="~/assets/img/komisyon.png" alt="Jet Stok Komisyon Hesaplama" /><span>Komisyon Hesaplama</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="/bayilik-sistemi" title="Jet Stok Bayilik Sistemi"><img src="~/assets/img/bayi-sistem.png" alt="Jet Stok Bayilik Sistemi" /><span>Bayilik</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/referanslar" title="Jet Stok Referanslar">
+                        Referanslar
+                    </a>
+                </li>
+
+               
+                @* <li class="nav-item">
+                <a class="nav-link" title="Komisyon Hesaplama" href="/komisyon-hesaplama">
+                Komisyon Hesaplama
+                </a>
+                </li>*@
+
+            </ul>
+            <div class="nav-side custom-nav-side mobile-hide">
+                <div class="align-items-center">
+                    <a target="_blank" title="Pazaryeri Entegrasyonu - Giriş" href="https://app.jetstok.com" style="font-weight:500; margin-right:10px;">
+                        Giriş  
+                    </a>
+                    <a target="_blank" title="Pazaryeri Entegrasyonu - Kayıt Ol"  href="https://app.jetstok.com/register" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                        <span>Kayıt Ol </span>
+                    </a>
+                </div>
+            </div>
+             <div class="nav-side custom-nav-side row mobile-show">
+                <div class="col-12" style="background: #efefef; padding: 10px;height:45px;">
+                    <a target="_blank" title="Pazaryeri Entegrasyonu - Giriş" href="https://app.jetstok.com" style="font-weight:500; font-size: 18px;  width: 50%;margin: 0px !important; float: left;border-right: 1px solid #c3c3c3;" class="col-6">
+                        Giriş  
+                    </a>
+                    <a target="_blank" title="Pazaryeri Entegrasyonu - Kayıt Ol"  href="https://app.jetstok.com/register" class="col-6  btn-customer-register" style=" font-size: 18px;width: 50%;margin: 0px !important; float: left;">
+                        <span>Kayıt Ol </span>
+                    </a>
+                </div>
+            </div>
+            <div class="row custom-mobile-icons">
+                <div class="col-md-8 mobile-center">
+                    <a style="font-size: 15px;" title="Destek" href="tel:05307383242"><i class="fa fa-phone mr-2"></i> +90 530 738 32 42</a>
+                   @* <span><i class="fa fa-envelope mr-2"></i> info@jetstok.com</span>*@
+                </div>
+              @*  <div class="col-md-4 mobile-center head-social">
+                    <a target="_blank" rel="nofollow" title="Jet Stok Facebook" href="https://www.facebook.com/jetstokcom?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                    <a target="_blank" rel="nofollow" title="Jet Stok Instagram" href="https://instagram.com/jet_stok?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" rel="nofollow" title="Jet Stok Linkedin" href="https://www.linkedin.com/company/jet-stok/"><i class="fab fa-linkedin"></i></a>
+                    <a href="javascript:void(0);" title="Jet Stok Whatsapp" onclick="location.href ='https://api.whatsapp.com/send?phone=902167065538&amp;text=Merhaba&nbsp;Bilgi&nbsp;Almak&nbsp;İstiyorum.';"><i class="fab fa-whatsapp"></i></a>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</nav>

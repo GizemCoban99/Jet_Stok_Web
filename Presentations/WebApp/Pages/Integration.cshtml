@@ -1,0 +1,83 @@
+﻿@page
+@model WebApp.Pages.IntegrationModel
+
+@{
+    ViewData["Title"] = "Tüm Entegrasyonlarımız";
+    ViewData["Canonical"] = "https://www.jetstok.com/tumEntegrasyonlar";
+}
+
+<section class="integration-wrapper">
+    <h2 class="integration-heading">Tüm Entegrasyonlarımız</h2>
+    <p class="integration-texxt">İhtiyacınıza uygun entegrasyonu seçin</p>
+</section>
+
+<div class="integration-container">
+    <aside class="integration-sidebar">
+        <ul class="integration-categories">
+            @foreach (var item in Model.integrationsList)
+            {
+                <li>
+                    <a href="#category-@item.id" class="category-link">@item.name</a>
+                </li>
+            }
+        </ul>
+    </aside>
+
+    <div class="integration-content">
+        @foreach (var parent in Model.integrationsList)
+        {
+            @if (Model.subIntegrations.ContainsKey(parent.id))
+            {
+                <div class="integration-section" id="category-@parent.id">
+                    <h2 class="integration-section-title">
+                        <span>@parent.name</span>
+                    </h2>
+
+                    <div class="integration-grid">
+                        @foreach (var item in Model.subIntegrations[parent.id])
+                        {
+                            <a href="/@(item.seo_url ?? "#")" class="integration-card">
+                                <div class="integration-card-content">
+                                    <div class="integration-icon-container">
+                                        <img src="@(string.IsNullOrEmpty(item.image_description)? "/images/default-icon.png": "https://www.jetstok.com/upload/" + item.image_description)"
+                                             alt="@item.name"
+                                             class="integration-icon"
+                                             onerror="this.onerror=null;this.src='/images/default-icon.png';" />
+                                    </div>
+
+                                    <div class="integration-info">
+                                        <h3 class="integration-title">@item.name</h3>
+                                        <p class="integration-description">
+                                            @(string.IsNullOrEmpty(item.seo_description) ? "Açıklama bulunmamaktadır." : item.seo_description)
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".category-link");
+
+        links.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                const targetId = this.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    });
+</script>

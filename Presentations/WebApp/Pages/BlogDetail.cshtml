@@ -1,0 +1,126 @@
+﻿@page
+@model WebApp.Pages.BlogDetailModel
+@{
+    ViewData["Title"] = Model.data.seo_title;
+    ViewData["Description"] = Model.data.seo_description;
+    ViewData["Canonical"] = "https://www.jetstok.com/blog/" + Model.data.seo_url;  
+
+
+    if (!string.IsNullOrEmpty(Model.data.content_1))
+    {
+        var rx = new System.Text.RegularExpressions.Regex(@"<h2[^>]*>.*?<\/h2>");
+        var input = Model.data.content_1;
+        var matches = rx.Matches(input).Cast<System.Text.RegularExpressions.Match>().ToList();
+        var say = 1;
+        foreach (var m in matches)
+        {
+            if (matches.Count/2 ==say)
+            {
+                if (!string.IsNullOrEmpty(m.Value))
+                {
+                    var newString = "<br><br><p><a target=\"_blank\" title=\"Pazaryeri Entegrasyonu - Bilgi Al\" href=\"/pazaryeri-form\"><img style=\"border-radius: 5px; height:auto;\" src=\"/assets/img/jetstokblogcontent.gif\" alt=\"Bilgi Al\" /></a></p><br><br>" + m.Value;
+                    Model.data.content_1 = input.Replace(m.Value, newString);
+                     
+                }
+            }
+            
+            say++;
+        }
+         
+    }
+   
+}
+@section HeaderContents{
+}
+<div class="single-project pt-0 style-5">
+<main class="blog-page style-5">
+    <section class="all-news section-padding pt-0 blog bg-transparent style-5">
+        <h1 class="color-000 text-center top-bg-gray"><span>@Html.Raw(Model.data.name)</span></h1>
+@*         <partial name="~/Pages/Shared/_GlobalForm.cshtml" />
+ *@        <div class="container">
+            <div class="blog-details-slider mb-50">
+                <div class="section-head text-center mb-60 style-5">
+                    @* <small class="d-block date text">
+                    <a href="#" class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold"> Blog </a>
+                    <i class="bi bi-clock me-1"></i>
+                    <span class="op-8">Posted on 15 Days ago</span>
+                    </small>*@
+
+                </div>
+            </div>
+
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-8">
+
+                    <div class="blog-content-info">
+                        <div class="img me-3 mb-30">
+
+                            <img src="/images/loading-gif.gif" data-src="@(Model.data.image.ToImagePath())" alt="@Html.Raw(Model.data.name)">
+                        </div>
+                        <div class="text mb-10 color-666">
+                            @Html.Raw(Model.data.content_1)
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="side-blog style-5 ps-lg-5 mt-5 mt-lg-0">
+                       
+                        <div class="side-recent-post mb-50">
+                                <strong class="title mb-30 text-uppercase fw-normal">
+                                Kategoriler
+                            </strong>
+                            <br /><hr />
+                            @foreach (var item in Model.blogListByCategory)
+                            {
+                                <a href="/blogs?category=@item.seo_url" title="@Html.Raw(item.name)" class="post-card post-card-cat pb-2 mb-2 border-bottom2">
+                                    <div class="inf2">
+                                        <strong>@Html.Raw(item.name)</strong> 
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                        
+                        <hr />
+
+                        <div class="side-recent-post mb-50">
+                                <strong class="title mb-20 text-uppercase fw-normal">
+                                Geçmiş Yazılar
+                            </strong>
+                            @foreach (var item in Model.blogs.Take(8).ToList())
+                            {
+                                    <a href="/blog/@item.seo_url" title="@Html.Raw(item.name)" class="post-card pb-3 mb-3 border-bottom brd-gray">
+                                    <div class="img me-3">
+                                        <img src="@(item.image.ToImagePath())" alt="@Html.Raw(item.name)">
+                                    </div>
+                                    <div class="inf">
+                                            <strong>@Html.Raw(item.name)</strong>
+                                        <p>@Html.Raw(item.name) [...] </p>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                      
+                        <div class="side-share mb-50">
+                                <strong class="title mb-20 text-uppercase fw-normal">
+                                Sosyal Medya
+                            </strong>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Instagram" href="https://instagram.com/jet_stok?igshid=YmMyMTA2M2Y=" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Facebook" href="https://www.facebook.com/jetstokcom?mibextid=ZbWKwL" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" title="Jet Stok Linkedin" href="https://www.linkedin.com/company/jet-stok/" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+ </div>
+ 

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="tr" class="js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Pomelo Soft">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pomelo">
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>@ViewData["Title"] - Pomelo</title>
+    <link rel="stylesheet" href="/admin_assets/css/dashlite.css" asp-append-version="true">
+    <link id="skin-default" rel="stylesheet" href="/admin_assets/css/theme.css?ver=3.0.3"> 
+</head>
+
+<body class="nk-body bg-lighter npc-general has-sidebar ">
+    @Html.AntiForgeryToken()
+    <div class="loading-app">
+        <div class="text-center">  <div class="spinner-border" role="status">    <span class="visually-hidden">Loading...</span>  </div></div>
+    </div>
+    <div class="nk-app-root">
+        <div class="nk-main ">
+            <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
+                <div class="nk-sidebar-element nk-sidebar-head" style="text-align:center; display:block;">
+                    <div class="nk-sidebar-brand">
+                        <a href="/" title="Jet Stok" class="logo-link nk-sidebar-logo">
+                            <img class="logo-dark logo-img w-100" src="/images/favicon.png" alt="Jet Stok">
+                            <img class="logo-small logo-img logo-img-small" src="/images/favicon.png" width="35px" alt="Jet Stok">
+                        </a>
+                    </div>
+                    <div class="nk-menu-trigger me-n2">
+                        <a href="#" title="Jet Stok" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" title="Jet Stok" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                    </div>
+                </div>
+                <div class="nk-sidebar-element">
+                    <partial name="~/Pages/Shared/AdminPartialViews/_Menu.cshtml" />
+                </div>
+            </div>
+            <div class="nk-wrap ">
+                <div class="nk-header nk-header-fixed is-light">
+                    <partial name="~/Pages/Shared/AdminPartialViews/_Header.cshtml" />
+                </div>
+
+                <div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    @await RenderSectionAsync("FooterContents", required: false)
+    <script src="/admin_assets/js/bundle.js?ver=3.0.3"></script>
+    <script src="/admin_assets/js/scripts.js?ver=3.0.3"></script>
+    <script src="/admin_assets/js/charts/chart-ecommerce.js?ver=3.0.3"></script>
+    <script src="/admin_assets/js/libs/datatable-btns.js?ver=3.0.3"></script>
+    <script src="/lib/maskmoney/src/jquery.maskmoney.js"></script>
+     
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="/admin_assets/js/app.js" asp-append-version="true"></script>
+    <partial name="~/Pages/Shared/AdminPartialViews/_Modal.cshtml" />
+    @await RenderSectionAsync("ScriptsPageEnd", required: false)
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿<div class="integration-container">
+    @foreach (var item in Model)
+
+    {
+        <h3 class="integration-title" onclick="toggleDetails(this)">@item.name</h3>
+    }
+</div>
+
+<script>
+    function toggleDetails(element) {
+        console.log(element.innerText + " tıklandı");
+    }
+</script>

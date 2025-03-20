@@ -1,0 +1,328 @@
+﻿@page
+@model WebApp.Pages.XmlIntegrationDetailModel
+@{
+    ViewData["Title"] = Model.data.name + " XML | "+Model.data.name+" XML Entegrasyonu";
+    ViewData["Description"] = Model.data.name + " XML ürünlerini pazaryerlerinde Jet Stok ile satışa aç. "+Model.data.name+" XML stoklarını ve fiyatlarını Jet Stok anlık güncellesin.";
+    ViewData["Canonical"] = "https://www.jetstok.com/XML-entegrasyon/"+Model.data.seo_url;
+    
+}
+<style>
+    .custom-text > p{
+        margin-bottom:12px;
+    }
+     
+    .custom-text > ul > li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<main class="">
+
+<section class="testimonials style-4 pt-50 why-ecommerce-pt">
+    <div class="section-head text-center mb-80 top-bg-gray style-5">
+        <h1 class="mb-20"><span class="headerSpanColor"> @Model.data.name XML</span> </h1>
+        <p>@Model.data.name XML ürünlerini pazaryerlerinde Jet Stok ile satışa aç. @Model.data.name XML stoklarını ve fiyatlarını Jet Stok anlık güncellesin.</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-5 why-ecommerce-pt">
+                    <div class="section-head style-4">
+
+                        <h2 class="mb-30"> <span>Neden Jet Stok XML Entegrasyonu?</span> </h2>
+                    </div>
+                    <p class="text mb-40">
+                        Jet Stok XML Entegrasyonu ile süreçlerin otomatik ve güvenle gerçekleşsin.
+                    </p>
+                    <div class="d-flex align-items-center mt-70">
+                        <a href="tel:05307383242" title="Hemen E-ticarete Geç" class="btn rounded-pill bg-blue4 fw-bold text-white me-4" target="_blank">
+                            <small>Hemen İletişime Geç</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 why-ecommerce-pt-60">
+                    <div class="testi-cards">
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/assets/img/testimonials/user4.png" alt="Ürün Bilgileri">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h3>Ürün Bilgileri</h3>
+                                <span>
+                                   @Model.data.name XML'den her bir ürünün bilgileri ayrıntılı ve eksiksiz Jet Stok paneline aktarılır.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/assets/img/testimonials/user7.png" alt="Stok ve Fiyat Güncellemeleri">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h3>Stok ve Fiyat Güncellemeleri</h3>
+                                 <span>
+                                  Stok ve fiyat bilgileri @Model.data.name XML entegrasyonu ile otomatik güncellenir.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/assets/img/testimonials/user6.png" alt="Kategori ve Marka Bilgisi">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h3>Kategori ve Marka Bilgisi</h3>
+                                <span>
+                                   @Model.data.name XML ürünlerinizin doğru Marka ve Kategori bilgileri doğru şekilde aktarılır.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/assets/img/testimonials/user5.png" alt="Resim ve Görsel Destek">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h3>Resim ve Görsel Destek</h3>
+                                <span>
+                                   @Model.data.name XML ürün görselleri XML'den yüksek kalite ve uygun formatta aktarılır.
+                                </span>
+                            </div>
+                        </div>
+                        <img src="/assets/img/contact_globe.svg" alt="Jet Stok - Pazaryeri Entegrasyonu" class="testi-globe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="about e-commerce section-padding style-4 pt-20 pb-20">
+   
+    <div class="content trd-content">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-5">
+                    <div class="img mb-30 mb-lg-0 text-center">
+                        <img src="/assets/img/about/about_s4_img3.png" alt="JET STOK HAKKINDA" class="img-body">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="info">
+                        <div class="section-head style-4"> 
+                            <h2 class="mb-30"><span>@Model.data.name XML Entegrasyonuna Nasıl Başlarım? </span> </h2>
+                        </div>
+                       @*  <p class="text mb-10">
+                            Jet Stok olarak; E-Ticaret ve mobil uygulama geliştirme alanlarında siz değerli müşterilerimize profesyonel destek ve çözümler sunuyoruz.
+                        </p> *@
+                        <p class="text mb-20">XML Entegrasyonu için yapmanız gerekenler aşağıdadır;</p>
+                        <ul>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Jet Stok paketinizi satın almak</p>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">@Model.data.name ile anlaşma yapmak</p>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Jet Stok Destek ekibi ile XML'i tanımlamak</p>
+                            </li> 
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Kategori ve Marka eşleştirmesi yapmak </p>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Hızlı ayarlar ile tanımladığınız özellikleri otomatikleştirmek. </p>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Ürünleri pazaryerine göndermek.</p>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-dot fs-2 me-2 lh-1 color-blue4"></i>
+                                <p class="fw-bold">Siparişlerinizi takip etmek.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="/assets/img/about/about_s4_lines.png" alt="@Model.data.name XML Entegrasyonu" class="lines">
+        <img src="/assets/img/about/about_s4_bubble.png" alt="@Model.data.name XML Entegrasyonu" class="bubble">
+    </div>
+</section>
+ 
+
+
+<partial name="~/Pages/Shared/_Pricing.cshtml" model="Model.packages" />
+
+<section class="faq section-padding style-4 pt-100 e-commerce">
+    <div class="container">
+        <div class="section-head text-center style-4"> 
+            <h2 class="mb-30">  <span>@Model.data.name XML Sıkça Sorulan Sorular </span> </h2>
+        </div>
+        <div class="content">
+            <div class="faq style-3 style-4">
+                <div class="accordion" id="accordionSt4">
+                    <div class="row gx-5">
+                        <div class="col-lg-6">
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading11">
+                                    <button class="accordion-button rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                      @Model.data.name XML Nasıl Başlarım?
+                                    </button>
+                                </h3>
+                                <div id="collapse11" class="accordion-collapse collapse rounded-0" aria-labelledby="heading11" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                       Jet Stok paketinizi aldıktan sonra XML'i panelinize tanımlayıp dakikalar içinde satışa başlayabilirsiniz.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading12">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                       @Model.data.name  Neden XML İle Satış Yapmalıyım?
+                                    </button>
+                                </h3>
+                                <div id="collapse12" class="accordion-collapse collapse  rounded-0" aria-labelledby="heading12" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                      @Model.data.name XML ile ürün satışında stok tutmanıza ve kargo süreçleri ile uağraşmanıza gerek yoktur. @Model.data.name XML aldığınızda bunları sizin yerinize gerçekleştirir.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading13">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        @Model.data.name XML Ürünlerimi Tüm Pazaryerlerinde Satabilir Miyim?
+                                    </button>
+                                </h3>
+                                <div id="collapse13" class="accordion-collapse collapse rounded-0" aria-labelledby="heading13" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                      @Model.data.name XML ile ürünlerinizi Jet Stok sisteminde tanımlı olan tüm pazaryerlerinde satışa açabilirsiniz. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                       @Model.data.name XML Ürünlerinde İade Nasıl Olur?
+                                    </button>
+                                </h3>
+                                <div id="collapse4" class="accordion-collapse collapse rounded-0" aria-labelledby="heading4" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        @Model.data.name XML ürün hasarlı gönderilmiş ise XML firmanızla iletişime geçebilirsiniz. Diğer durumlar için XML firmasının belirlediği şekilde süreç ilerler.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                        @Model.data.name XML Ürünlerinden Kar Edebilir Miyim?
+                                    </button>
+                                </h3>
+                                <div id="collapse5" class="accordion-collapse collapse rounded-0" aria-labelledby="heading5" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                       @Model.data.name XML ürünlerinden doğru bir strateji ile çalışırsanız kesinlikle kar edebilirsiniz. Maliyetlendirmeyi doğru planlamanız yeterlidir. 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h3 class="accordion-header" id="heading6">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                       @Model.data.name XML Ürünleri Ne Kadar Sürede Satışa Açabilirim?
+                                    </button>
+                                </h3>
+                                <div id="collapse6" class="accordion-collapse collapse rounded-0" aria-labelledby="heading6" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Jet Stok ile dakikalar içinde satışa açabilirsiniz. Hatta @Model.data.name XML'i Jet Stok sisteminde daha önce kullanan müşteri var ise özelliklerinizi otomatik eşleştirmeyi talep edip tüm süreci kısaltabilirsiniz.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="challenge section-padding style-5 pb-4 projects style-7" style="background:white;">
+    <div class="container">
+
+        <div class="row gx-5">
+            <div class="col-lg-4">
+                <div class="section-head style-4 wow fadeInUp">
+                    <h2 class="mb-30"><span>@Html.Raw(Model.data.name) XML Entegrasyonu</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="text color-666 mb-20 wow fadeInUp">
+                    Gün geçtikçe yeni teknolojiler ortaya çıkmakta ve e-ticaret dünyasını da etkisi altına alarak büyümesine katkı sağlamaktadır. 
+                    Bu durum insanların internetten alışveriş yapmalarına olan ilgisini de arttırmaktadır.
+                    Böylelikle internetten farklı alışveriş yapma ve e-ticaret yöntemleri ortaya çıkmaktadır. 
+                    Günümüzde popüler olanlardan biride XML ile dropshipping yapma yöntemidir. Bu yazımızda size <b>@Model.data.name XML dropshipping</b> modeli hakkında bilmeniz gereken her şeyi aktarmaya çalışacağız.
+                </div>
+                <div class="faq style-3 style-4 wow fadeInUp">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <span class="accordion-header" id="heading2">
+                                <button class="accordion-button accordion-btn collapsed  colllapse-p" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Devamı
+                                </button>
+                            </span>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body custom-text">
+                                    
+                                    @if (!string.IsNullOrEmpty(Model.data.content_5))
+                                    {
+                                        <h3>
+                                            @Html.Raw(Model.data.name) Bayilik Sistemi
+                                        </h3>
+                                        <p>
+                                            @Html.Raw(Model.data.content_5)
+                                        </p>
+                                    } 
+                                     
+                                    <h3>
+                                        Jet Stok ile @Model.data.name XML Entegrasyonu’nun Avantajları Nelerdir?
+                                    </h3>
+                                    <p>
+                                        <ul>
+                                            <li>
+                                               * Jet Stok’a @Model.data.name XML'den yüklenen bütün ürünler belirlenen  kriterlere uygun biçimde pazaryerine aktarılır ve dakikalar içinde güncellenir.
+                                            </li> 
+                                            <li>
+                                               * @Model.data.name XML ürünlerinden satış gerçekleştiğinde tüm mağazalarda güncellenir.
+                                            </li>
+                                            <li>
+                                               * Siparişleri anında otomatik olarak onaylanır ve zamandan kâr etmiş olunur.
+                                            </li>
+                                            <li>
+                                               * Kargo kampanyalarına dair tüm kargo kodları da hızlıca Jet Stok sistemine düşer.
+                                            </li>
+                                            <li>
+                                               * Müşterileri Soruları anında Jet Stok ekranına gelir ve Jet Stok’un panelinden kolay ve hızlı şekilde cevaplanır.
+                                            </li>
+                                            <li>
+                                               * @Model.data.name XML'den gelen ürün bilgilerini tek tek elle kaydetmeye gerek yoktur.
+                                            </li>
+                                        </ul>
+                                    </p>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</main>

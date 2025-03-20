@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>ciceksepeti</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="44" height="44" rx="22"></rect>
+        <filter x="-17.0%" y="-10.2%" width="134.1%" height="134.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.105868253 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-37.000000, -2585.000000)">
+            <g id="Platform-Logo-Setleri-Vector" transform="translate(41.000000, 2090.000000)">
+                <g id="ciceksepeti" transform="translate(0.000000, 496.000000)">
+                    <g id="Rectangle">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="ciceksepeti-icon" transform="translate(8.000000, 10.000000)">
+                        <path d="M8.28493777,11.7928216 C9.63683377,11.3356376 10.9930978,11.0742856 12.4527378,10.8405976 L12.4796738,10.8376856 L12.8393058,10.8020136 C12.8393058,10.8020136 11.4480978,17.2535496 7.55402577,20.3773976 C3.66068177,23.5019736 -0.427766232,20.2026776 1.25755377,16.6172776 C2.39032177,14.2025016 5.30013777,12.7064616 8.28493777,11.7928216 Z" id="Path" fill="#E54F41"></path>
+                        <path d="M12.4585618,10.0376136 L12.4316258,10.0383416 C10.9545138,9.98374162 9.57713777,9.89128562 8.17937777,9.60081362 C5.10576177,9.05772562 2.03505777,7.92714162 0.615457768,5.66961362 C-1.49428623,2.31498962 2.16100177,-1.45750638 6.40669777,1.16838962 C10.6523938,3.79501362 12.8196498,10.0288776 12.8196498,10.0288776 L12.4767618,10.0376136 L12.4585618,10.0376136 Z" id="Path" fill="#E37C34"></path>
+                        <path d="M18.4259778,9.54548562 C17.0456898,9.90802962 15.6741378,10.0732856 14.2021218,10.2050536 L14.1751858,10.2057816 L13.8140978,10.2167016 C13.8140978,10.2167016 15.6522978,3.87727762 19.7545778,1.03225362 C23.8568578,-1.81277038 27.7043378,1.76316562 25.7729538,5.22407762 C24.4749298,7.55222162 21.4675618,8.84223762 18.4259778,9.54548562 Z" id="Path" fill="#51B449"></path>
+                        <path d="M16.9495938,13.6710616 L16.9758018,13.6710616 C18.4456338,13.8297656 19.8120898,14.0168616 21.1865538,14.4041576 C24.2150338,15.1612776 27.1998338,16.5037096 28.4578178,18.8529656 C30.3280498,22.3459096 26.4186898,25.8555976 22.3673698,22.9370456 C18.3153218,20.0221336 16.5885058,13.6535896 16.5885058,13.6535896 L16.9306658,13.6681496 L16.9495938,13.6710616 Z" id="Path" fill="#1B5BA5"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,44 @@
+﻿@page
+@model WebApp.Pages.Account.LoginModel
+@{
+    Layout = "_AdminLayoutAuth";
+    ViewData["Title"] = "Giriş";
+}
+<div class="nk-block nk-block-middle nk-auth-body">
+    @*<div class="brand-logo pb-5 center">
+    <a href="/" class="logo-link">
+    <img class="logo-dark logo-img logo-img-lg w-100" src="/images/logo.svg" alt="Pomelo">
+    </a>
+    </div>*@
+    <div class="nk-block-head">
+        <div class="nk-block-head-content">
+            <h5 class="nk-block-title center">Giriş</h5>
+            <div class="nk-block-des">
+            </div>
+        </div>
+    </div>
+    <form action="Login" id="LoginForm" class="form-validate is-alter" autocomplete="off">
+
+        <div class="form-group">
+            <div class="form-label-group">
+                <label class="form-label" for="email-address">Email</label>
+            </div>
+            <div class="form-control-wrap">
+                <input autocomplete="off" type="text" class="form-control" name="Email" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-label-group">
+                <label class="form-label" for="password">Şifre</label>
+            </div>
+            <div class="form-control-wrap">
+                <input autocomplete="new-password" name="Password" type="password" class="form-control" placeholder="Şifre">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+        </div>
+    </form>
+</div> 

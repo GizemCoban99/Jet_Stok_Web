@@ -1,0 +1,48 @@
+﻿@page
+@model WebApp.Pages.FeaturesModel
+@{
+    ViewData["Title"] = "Pazaryeri Entegrasyon Özellikleri - Jet Stok";
+    ViewData["Description"] = "Dövizle fiyat güncelleme, mağaza sipariş yönetimi, gelişmiş raporlama, xml entegrasyonu, toplu ürün aktarımı, faturalandırma ve akıllı stok dağıtmı özellikleri";
+    ViewData["Canonical"] = "https://www.jetstok.com/ozellikler";
+}
+
+<section class="about section-padding style-4 pt-0">
+    <div class="section-head text-center mb-60  style-5 top-bg-gray">
+        <h1 class="mb-20"> <span class="headerSpanColor">Pazaryeri Entegrasyon Özellikleri </span> </h1>
+        <p>
+            En iyi özelliklerle ihtiyacınız olan çözümleri sunuyoruz.
+        </p>
+    </div>
+    @foreach (var item in Model.datas)
+    {
+        <div class="content sec-content  wow fadeInUp">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="info features-p">
+                            <div class="section-head style-4">
+                                <h2 class="mb-30"> <span> @Html.Raw(item.name) </span> </h2>
+                            </div>
+                            @Html.Raw(item.content_1)
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-0 order-lg-2">
+                        <div class="img mb-30 mb-lg-0">
+                            @if (!String.IsNullOrEmpty(item.content_2))
+                            {
+                                @Html.Raw(item.content_2)
+                            }
+                            else
+                            {
+                                <img src="@(item.image.ToImagePath())" alt="@Html.Raw(item.name)">
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="assets/img/about/about_s4_bubble2.png" alt="" class="bubble2">
+        </div>
+    }
+
+</section>

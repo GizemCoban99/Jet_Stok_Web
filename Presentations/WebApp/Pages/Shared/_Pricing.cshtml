@@ -1,0 +1,1046 @@
+﻿@using EntityLayer.DTOs;
+@model PackageDTO
+<section class="pricing style-5 mobile-pricing-section">
+    @{
+        var isGray = true;
+        var clickUrl = "/pazaryeri-form";
+        if (Context.Request.Path.Value.Contains("e-ticaret-fiyatlari"))
+        {
+            clickUrl = "/e-ticaret-form";
+        }
+    }
+    <div class="container">
+
+        <div class="price-head fixed-head sticky" style="margin-bottom:5rem">
+
+
+            @foreach (var item in Model.packages.OrderBy(q => q.order_number))
+            {
+                var aTitle = (item.jetstok_package_id != 0 ? "Satın Al" : "Bize Ulaşın");
+                var aLink = (item.jetstok_package_id != 0 ? "/kayit-form/" + @item.id : clickUrl);
+                if (string.IsNullOrEmpty(item.summary))
+                {
+                    <div class="price-headItem">
+                        <div class="package-name">@Html.Raw(item.name)</div>
+                        <div class="package-month-price p-1">
+                            -
+                        </div>
+                        @*<span class="sale-price"> </span><span style="font-size:small;"></span><br>*@
+                         
+                        <span class="sale-price"> </span><span style="font-size:small;"></span><br>
+                        <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                            <span>@Html.Raw(aTitle)</span>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.summary))
+                    {
+                        <div class="price-headItem">
+                            <div class="package-name">@Html.Raw(item.name)</div>
+                            @*<div class="package-month-price" style="font-size:small;">
+                                <span class="montly-price"> @Html.Raw(string.Format("{0:0,0., ₺}", (item.summary.ConvertToDecimal()) / 12)) / Ay</span>
+                            </div>  *@
+                            <div class="package-month-price">
+                                @Html.Raw(string.Format("{0:0,0., ₺}", (item.summary.ConvertToDecimal()) / 12)) <span class="package-yearly-price">/ Ay</span>
+                            </div>
+                            <div class="package-yearly-price">
+                                <span class="sale-price">@Html.Raw(string.Format("{0:0,0.,}", item.content_1.ConvertToDecimal())) </span> @Html.Raw(string.Format("{0:0,0., ₺}", item.summary.ConvertToDecimal())) / Yıl
+                            </div>
+                          @*  <span class="sale-price"> @Html.Raw(string.Format("{0:0,0., ₺}", item.content_1.ConvertToDecimal()))</span>
+                            <span style="font-size:small;">/ Yıl</span><br>*@
+                            <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                                <span>@Html.Raw(aTitle) </span>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="price-headItem">
+                            <div class="package-name">@Html.Raw(item.name)</div>
+                            @*<div class="package-month-price">
+                                -
+                            </div>
+                           <span class="sale-price"> -</span><br>*@
+                            <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                                <span>@Html.Raw(aTitle) </span>
+                            </a>
+                        </div>
+                    }
+
+                }
+                isGray = !isGray;
+            }
+        </div>
+        <style>
+            .package-yearly-price{
+                font-size: 12px !important;
+                font-weight: 400 !important;
+            }
+            .summary-price-table {
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                border: 1px solid #5e48c6;
+            }
+
+                .summary-price-table > .content {
+                    margin-top: 20px !important;
+                }
+
+                    .summary-price-table > .content > .price-body > .price-bodyItems {
+                        border-bottom: 0px !important;
+                    }
+
+                        .summary-price-table > .content > .price-body > .price-bodyItems > .price-item {
+                            border-right: 1px solid #5e48c6;
+                            height: 50px !important;
+                        }
+
+                            .summary-price-table > .content > .price-body > .price-bodyItems > .price-item > span {
+                                font-size: 12px !important;
+                                float: left !important;
+                            }
+
+                            .summary-price-table > .content > .price-body > .price-bodyItems > .price-item > i {
+                                font-size: 20px;
+                                width: 25px;
+                                height: 20px;
+                            }
+
+                            .custom-price-title{
+
+                            }
+
+            .custom-price-title > h2{
+                 font-size: 35px !important;
+            }
+
+            .custom-price-title > h2 > span{
+                         
+            }
+            .kontor-fiyat, .kontor-liste{
+                padding:20px;
+            }
+            
+            .kontor-fiyat > div > div{
+                border-bottom: 1px solid #7b5fe647 !important;
+                padding: 5px 0px !important;
+            }
+            .kontor-fiyat > div > div > div{
+                height: auto !important;
+                padding: 0px 0px !important;
+
+                width: 33% !important;
+            }
+
+            .kontor-liste > div > div{
+                border-bottom: 1px solid #7b5fe647 !important;
+                padding: 5px 0px !important;
+            }
+
+            .kontor-fiyat > div > div > div > span{
+                font-size: 1rem !important;
+
+            }
+            .kontor-liste > div > span{
+                font-size: 1rem !important;
+            } 
+        </style>
+        <div class="table-responsive price-body-custom summary-price-table">
+            <div class="content">
+                <div class="price-body">
+                    
+                    <div class="price-bodyItems">
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Pazaryeri Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Fatura Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Toplu İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Toplu İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Toplu İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Toplu İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Toplu İşlemler</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Ticaret Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Ticaret Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Ticaret Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Ticaret Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Kargo Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Kargo Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Kargo Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Kargo Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> ERP Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> ERP Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> ERP Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> ERP Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Otomatik İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Otomatik İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Otomatik İşlemler</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Otomatik İşlemler</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Fulfillment Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Fulfillment Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Fulfillment Entegrasyonu</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Global Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Global Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Global Entegrasyonu</span>
+                        </div>
+                    </div>
+
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Özel Müşteri Temsilcisi </span>
+                        </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> Özel Müşteri Temsilcisi</span>
+                        </div>
+                    </div>
+                    <div class="price-bodyItems">
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item"> </div>
+                        <div class="price-item">
+                            <i class="bi bi-check2"></i> <span> E-Ticaret Sitesi</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="container" style="text-align:center">
+        <span class="maturity">
+            Vade Farksız 3 Taksit Fırsatı
+        </span>
+    </div>
+    <hr />
+    <div class="container">
+        <div class="section-head style-8 text-center mt-30 custom-price-title">
+            <h2>
+                <span>Tüm Özellikler </span>
+            </h2>
+            <span class="maturity-mobile">
+                Vade Farksız 3 Taksit Fırsatı
+            </span>
+        </div>
+        <div class="price-head fixed-head sticky">
+            <div class="price-headTitle headTitle-container">
+                
+            </div>
+
+
+            @foreach (var item in Model.packages.OrderBy(q => q.order_number))
+            {
+                var aTitle = (item.jetstok_package_id != 0 ? "Satın Al" : "Bize Ulaşın");
+                var aLink = (item.jetstok_package_id != 0 ? "/kayit-form/" + @item.id : clickUrl);
+                if (string.IsNullOrEmpty(item.summary))
+                {
+                    <div class="price-headItem">
+                        <div class="package-name">@Html.Raw(item.name)</div>
+
+                        <div class="package-month-price">
+                            -
+                        </div>
+
+                        <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                            <span>@Html.Raw(aTitle)</span>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.summary))
+                    {
+                        <div class="price-headItem">
+                            <div class="package-name">@Html.Raw(item.name)</div>
+                           
+                            <div class="package-month-price">
+                                @Html.Raw(string.Format("{0:0,0., ₺}", item.summary.ConvertToDecimal()))
+                            </div>
+                           
+                            <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                                <span>@Html.Raw(aTitle) </span>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="price-headItem">
+                            <div class="package-name">@Html.Raw(item.name)</div>
+                           
+                            <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill bg-purple brd-gray sm-butn fw-bold ms-2 btn-customer-register">
+                                <span>@Html.Raw(aTitle) </span>
+                            </a>
+                        </div>
+                    }
+
+                }
+                isGray = !isGray;
+            }
+        </div>
+        <div class="table-responsive price-body-custom">
+            <div class="content">
+
+
+
+                @foreach (var g in Model.packageFeature.Where(q => !string.IsNullOrEmpty(q.subtitle)).OrderBy(q => Convert.ToInt32(q.subtitle)).ToList())
+                {
+                    var groupData = Model.packageFeature.Where(q => q.title == g.title).ToList();
+                    <div class="price-head" style="margin-top:50px;">
+                        <div class="price-headTitle section-head style-4">
+                            <h3><span>@Html.Raw(g.title)</span></h3>
+                        </div>
+                    </div>
+                    <div class="price-body">
+                        @foreach (var item in groupData.OrderBy(q => q.order_number).ToList())
+                        {
+                            <div class="price-bodyItems">
+                                <div class="price-bodyTitle">
+                                    @Html.Raw(item.name)
+                                    <div class="pop-info">
+                                        <i class="fas fa-info-circle bttn-info"></i>
+                                        <div class="hidden_content">
+                                            <div class="title"> @Html.Raw(item.summary)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_2)) || Globals.ClearHtml(item.content_2).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_2).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(Globals.ClearHtml(item.content_2)) 
+                                    }
+                                </div>
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_3)) || Globals.ClearHtml(item.content_3).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_3).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                         @Html.Raw(Globals.ClearHtml(item.content_3)) 
+                                    }
+                                </div>
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_4)) || Globals.ClearHtml(item.content_4).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_4).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                         @Html.Raw(Globals.ClearHtml(item.content_4)) 
+                                    }
+                                </div>
+
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_5)) || Globals.ClearHtml(item.content_5).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_5).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                         @Html.Raw(Globals.ClearHtml(item.content_5)) 
+                                    }
+                                </div>
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_6)) || Globals.ClearHtml(item.content_6).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_6).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                         @Html.Raw(Globals.ClearHtml(item.content_6)) 
+                                    }
+                                </div>
+                                <div class="price-item">
+                                    @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_7)) || Globals.ClearHtml(item.content_7).ToLower() == "0")
+                                    {
+                                        <i class="bi bi-dash-lg" style="color:gray"></i>
+                                    }
+                                    else if (Globals.ClearHtml(item.content_7).ToLower() == "var")
+                                    {
+                                        <i class="bi bi-check2"></i>
+                                    }
+                                    else
+                                    {
+                                         @Html.Raw(Globals.ClearHtml(item.content_7)) 
+                                    }
+                                </div>
+                            </div>
+                            isGray = !isGray;
+
+                        }
+                    </div>
+                }
+
+
+                <div class="price-foot">
+                    <div class="price-footTitle">
+                    </div>
+                    @{
+                        isGray = true;
+                    }
+                    @foreach (var item in Model.packages.OrderBy(q => q.order_number).ToList())
+                    {
+                        var aTitle = (item.jetstok_package_id != 0 ? "Satın Al" : "Bize Ulaşın");
+                        var aLink = (item.jetstok_package_id != 0 ? "/kayit-form/" + @item.id : clickUrl);
+                        if (string.IsNullOrEmpty(item.summary))
+                        {
+                            <div class="price-footItem">
+                                <a href="@aLink" title="@Html.Raw(aTitle)" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                                    <span>@Html.Raw(aTitle)</span>
+                                </a>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price-footItem">
+                                <a href="@aLink" title="@Html.Raw(aTitle)" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                                    <span>@Html.Raw(aTitle)</span>
+                                </a>
+                            </div>
+                        }
+
+                        isGray = !isGray;
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        @*Standart Plus*@
+
+        @foreach (var p in Model.packages.OrderBy(q => q.order_number).ToList())
+        {
+            var aTitle = (p.jetstok_package_id != 0 ? "Satın Al" : "Bize Ulaşın");
+            var aLink = (p.jetstok_package_id != 0 ? "/kayit-form/" + p.id : clickUrl);
+            <div class="table-responsive price-body-custom-mobile">
+                <div class="content">
+                    <div class="price-head">
+
+
+                        @if (string.IsNullOrEmpty(p.summary))
+                        {
+                            <div class="price-headItem">
+                                <div class="package-name">@Html.Raw(p.name)</div>
+                                <div class="package-month-price">
+                                    -
+                                </div>
+                                <span class="sale-price"></span><span style="font-size:small;"></span><br />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price-headItem">
+                                <div class="package-name">@Html.Raw(p.name)</div>
+                                
+                                <div class="package-month-price">
+                                    @Html.Raw(string.Format("{0:0,0., ₺}", (p.summary.ConvertToDecimal()) / 12)) <span class="package-yearly-price">/ Ay</span>
+                                </div>
+                                <div class="package-yearly-price">
+                                    <span class="sale-price">@Html.Raw(string.Format("{0:0,0.,}", p.content_1.ConvertToDecimal())) </span> @Html.Raw(string.Format("{0:0,0., ₺}", p.summary.ConvertToDecimal())) / Yıl
+                                </div>
+                                @*<span class="sale-price">@Html.Raw(string.Format("{0:0,0., ₺}", p.content_1.ConvertToDecimal()))</span><span style="font-size:small;">/ Yıllık</span><br />*@
+                            </div>
+                        }
+
+                    </div>
+                    @{
+                        var itemCount = 0;
+                    }
+                    <div class="price-body">
+
+                        @foreach (var item in Model.packageFeature.OrderBy(q => q.id).ToList())
+                        {
+                            if (itemCount < 15)
+                            {
+                                <div class="price-bodyItems">
+                                    <div class="price-bodyTitle">
+                                        @Html.Raw(item.name)
+                                       
+                                    </div>
+                                    <div class="price-item">
+                                        @if (p.order_number == 1)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_2)) || Globals.ClearHtml(item.content_2).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_2).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw(Globals.ClearHtml(item.content_2))
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (p.order_number == 2)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_3)) || Globals.ClearHtml(item.content_3).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_3).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                   @Html.Raw(Globals.ClearHtml(item.content_3)) 
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (p.order_number == 3)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_4)) || Globals.ClearHtml(item.content_4).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_4).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw(Globals.ClearHtml(item.content_4)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 4)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_5)) || Globals.ClearHtml(item.content_5).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_5).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_5)) 
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (p.order_number == 5)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_6)) || Globals.ClearHtml(item.content_6).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_6).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_6)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 6)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_7)) || Globals.ClearHtml(item.content_7).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_7).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_7)) 
+                                                }
+                                            </div>
+                                        }
+
+
+                                        @if (p.order_number == 7)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_7)) || Globals.ClearHtml(item.content_7).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_7).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                   @Html.Raw(Globals.ClearHtml(item.content_7)) 
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                itemCount++;
+                            }
+                            else
+                            {
+
+                                <div class="price-bodyItems gray-bg hidden">
+                                    <div class="price-bodyTitle">
+                                        @Html.Raw(item.name)
+                                        @* <div class="pop-info">
+                            <i class="fas fa-info-circle bttn-info"></i>
+                            <div class="hidden_content">
+                            <div class="title"> @Html.Raw(item.summary)</div>
+                            </div>
+                            </div> *@
+                                    </div>
+                                    <div class="price-item">
+                                        @if (p.order_number == 1)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_1)) || Globals.ClearHtml(item.content_1).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_1).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_1)) 
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (p.order_number == 2)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_2)) || Globals.ClearHtml(item.content_2).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_2).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_2)) 
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (p.order_number == 3)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_3)) || Globals.ClearHtml(item.content_3).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_3).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_3)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 4)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_4)) || Globals.ClearHtml(item.content_4).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_4).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw(Globals.ClearHtml(item.content_4)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 5)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_5)) || Globals.ClearHtml(item.content_5).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_5).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_5)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 6)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_6)) || Globals.ClearHtml(item.content_6).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_6).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw(Globals.ClearHtml(item.content_6)) 
+                                                }
+                                            </div>
+                                        }
+                                        @if (p.order_number == 7)
+                                        {
+                                            <div class="price-item">
+
+                                                @if (string.IsNullOrEmpty(Globals.ClearHtml(item.content_6)) || Globals.ClearHtml(item.content_6).ToLower() == "0")
+                                                {
+                                                    <i class="bi bi-dash-lg" style="color:gray"></i>
+                                                }
+                                                else if (Globals.ClearHtml(item.content_6).ToLower() == "var")
+                                                {
+                                                    <i class="bi bi-check2"></i>
+                                                }
+                                                else
+                                                {
+                                                     @Html.Raw(Globals.ClearHtml(item.content_6)) 
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                            isGray = !isGray;
+                        }
+                        <button class="goster-gizle-buton"><img class="rotate-img" src="~/assets/img/a1.png" /><span class="features-btn">Tüm Özellikler</span></button>
+
+                    </div>
+                    @if (string.IsNullOrEmpty(p.summary))
+                    {
+                        <div class="price-foot">
+                            <div class="price-footItem">
+                                <a href="@aLink" title="@Html.Raw(aTitle)" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                                    <span>@Html.Raw(aTitle)</span>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="price-foot">
+                            <div class="price-footItem">
+                                <a title="@Html.Raw(aTitle)" href="@aLink" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                                    <span>@Html.Raw(aTitle)</span>
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <section class="testimonials style-4 pt-50 bg-gray2">
+        <div class="container">
+            <div class="row">
+                <div class="section-head style-8 text-center custom-price-title">
+                    <h2>
+                        <span>e-Fatura Kontör Fiyatları </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 kontor-liste">
+                    <div class="price-body">
+                        <div style="width: 100% !important; font-size: 18px !important;">
+                            <span><strong>Özellikler</strong></span>
+                        </div>
+                        <div class="price-item">
+                            <span>Jet Stok İle e-Fatura Entegrasyonu</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Tek Tuşla Fatura Kesme</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Kolay Kurulum</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Toplu Fatura Kesme</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Zamandan Tasarruf</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Güvenilir Altyapı</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Avantajlı Fiyat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 kontor-fiyat">
+                    <div class="price-body">
+                        <div class="price-bodyItems">
+                            <div style="width: 100% !important; font-size: 18px !important;">
+                                <span><strong>Kontör Fiyatları</strong></span>
+                            </div>
+                        </div>
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>500 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>700₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 1,40₺</span>
+                            </div>
+                        </div>
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>1.000 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>1200₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 1,20₺</span>
+                            </div>
+                        </div>
+
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>5.000 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>4500₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 0,90₺</span>
+                            </div>
+                        </div>
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>10.000 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>8500₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 0,85₺</span>
+                            </div>
+                        </div> 
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>20.000 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>15000₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 0,75₺</span>
+                            </div>
+                        </div>
+                        <div class="price-bodyItems">
+                            <div class="price-item">
+                                <span>50.000 Kontör</span>
+                            </div>
+                            <div class="price-item">
+                                <span>32500₺</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Adet : 0,65₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </section>
+</section>

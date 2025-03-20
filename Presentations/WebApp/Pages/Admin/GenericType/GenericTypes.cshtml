@@ -1,0 +1,80 @@
+﻿@page
+@using EntityLayer.DTOs;
+@using Newtonsoft.Json;
+@model WebApp.Pages.Admin.GenericType.GenericTypesModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    Layout = "_AdminLayout";
+    var permissions = JsonConvert.DeserializeObject<List<PermissionDTO>>(ViewData["Permissions"].ToString());
+}
+
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h4 class="nk-block-title page-title">@Model.pageTitle</h4>
+                </div>
+                  @if (permissions.Any(q => q.id == 6))
+                {
+                    <div class="nk-block-head-content">
+                        <div class="toggle-wrap nk-block-tools-toggle">
+                            <div class="toggle-expand-content" data-content="pageMenu">
+                                <ul class="nk-block-tools g-3">
+                                    <li class="nk-block-tools-opt">
+                                        <a href="/PomeloAdmin/generic-type-add-or-update" title="Ekle" class="btn btn-sm btn-primary">
+                                            <em class="icon ni ni-plus"></em><span>Ekle</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <table class="datatable-init-custom nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                <thead>
+                    <tr class="nk-tb-item nk-tb-head">
+                        <th class="nk-tb-col"><span class="sub-text">Adı</span></th> 
+                        <th class="nk-tb-col nk-tb-col-tools text-end">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.list.ToList())
+                    {
+                        <tr class="nk-tb-item">
+                            <td class="nk-tb-col">
+                                <a href="/PomeloAdmin/generic-type-add-or-update/@item.id" title="@item.type_name" class="user-card">
+                                    <div class="user-info">
+                                        <span class="tb-lead">@item.type_name <span
+                                            class="dot dot-success d-md-none ms-1"></span></span>
+                                    </div>
+                                </a>
+                            </td> 
+                            <td class="nk-tb-col nk-tb-col-tools">
+                                <ul class="nk-tb-actions gx-1">
+                                    <li>
+                                        <div class="drodown">
+                                            <a href="#" title="İşlemler" class="dropdown-toggle btn btn-icon btn-trigger"
+                                            data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li>
+                                                        <a href="/PomeloAdmin/generic-type-add-or-update/@item.id" title="Güncelle">
+                                                            <em class="icon ni ni-edit"></em><span>Güncelle</span></a></li> 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</div>

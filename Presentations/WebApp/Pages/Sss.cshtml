@@ -1,0 +1,36 @@
+﻿@page
+@model WebApp.Pages.SssModel
+@{
+    ViewData["Title"] = Model.data.seo_title;
+    ViewData["Description"] = Model.data.seo_description;
+    ViewData["Canonical"] = "https://www.jetstok.com/"+Model.data.seo_url;
+     
+}
+
+@section HeaderContents{
+}
+
+<main class="single-project pt-0 style-5">
+
+<section class="about-app style-5">
+    <div class="container ">
+        <div class="content text-center">
+            <h1 class="mb-20 pt-40 "><span class="headerSpanColor">@Model.data.name</span></h1>
+            <div class="img-content pb-70 border-bottom brd-gray overflow-hidden">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="privacy-p">
+                            @Html.Raw(Model.data.summary)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+</main>

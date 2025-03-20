@@ -1,0 +1,9 @@
+﻿# All robots allowed
+User-agent: *
+Disallow: /login
+Disallow: /register
+Disallow: /password-recovery
+Disallow: /kayit-form
+
+# Sitemap files
+Sitemap: https://www.jetstok.com/sitemap.xml

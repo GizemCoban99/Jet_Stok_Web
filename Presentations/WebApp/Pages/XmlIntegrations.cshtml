@@ -1,0 +1,57 @@
+﻿@page
+@model WebApp.Pages.XmlIntegrationsModel
+@{
+    ViewData["Title"] = "Pazaryeri Entegrasyon XML Entegrasyonları - Jetstok";
+    ViewData["Description"] = "Jetstok Xml Entegrasyonları ile e-ticaret satışlarınızı güvenle arttırın. %99 XML okuma oranına sahibiz.";
+    ViewData["Canonical"] = "https://www.jetstok.com/xml-entegrasyonlar";
+    
+    var domain = "";
+#if DEBUG
+            domain = $"https://www.jetstok.com";
+#endif
+}
+<main class="single-project pt-0 style-5">
+<main class="portfolio-page style-1">
+    <section class="portfolio-projects section-padding pt-0 pb-0">
+        <div class="section-head text-center mb-60 top-bg-gray style-5">
+            <h1 class="mb-20"><span class="headerSpanColor"> XML Entegrasyon - İş Ortakları </span> </h1>
+            <p>Jet Stok'un XML Entegrasyonu yaptığı iş ortaklarını buradan takip edebilirsiniz.</p>                      
+        </div>
+        <div>
+            <p class="mb-4 text-center">Kullanacağınız XML sistemimizde kayıtlı ise özellikleriniz otomatik doldurulur. Böylece size sadece Pazaryeri'ne göndermek kalır.</p>
+        </div>
+        <div class="container">
+            <section class="portfolio style-1">
+                <div class="content">
+                    <div class="row mix-container">
+                        @foreach (var item in Model.list.OrderBy(q => q.order_number).ToList())
+                        {
+                            var url = string.IsNullOrEmpty(item.seo_url) ? "javascript:;" : item.seo_url;
+                            var image = $"{domain}/upload/{item.image}";
+
+                            <div class="col-lg-4 mix security consultation">
+                                <div class="portfolio-card mb-50" style="text-align:center;">
+                                    <a title="@Html.Raw(item.name)" href="/xml-entegrasyon/@item.seo_url">
+                                        <div class="img">
+                                            @*<img class="img_zoom" src="assets/img/projects/prog/1.jpeg" alt="">*@
+                                            <img class="img_zoom_two mb-4" src="@image" alt="@Html.Raw(item.name)">
+                                        </div>
+                                        @* <div class="info campaign-title">
+                                    <h6>
+                                    @item.name
+                                    </h6>
+                                    </div> *@
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+</main>

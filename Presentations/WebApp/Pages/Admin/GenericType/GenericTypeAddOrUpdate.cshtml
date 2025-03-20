@@ -1,0 +1,232 @@
+﻿@page
+@model WebApp.Pages.Admin.GenericType.GenericTypeAddOrUpdateModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    Layout = "_AdminLayout";
+}
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h4 class="nk-block-title page-title">@Model.pageTitle</h4>
+                </div>
+                <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <li class="nk-block-tools-opt">
+                                    <a href="/PomeloAdmin/generic-types" title="Geri" class="btn btn-sm btn-primary">
+                                        <em class="icon ni ni-arrow-left"></em><span>Geri</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <form action="GenericTypeAddOrUpdate" id="GenericTypeAddOrUpdateForm" class="" autocomplete="off">
+                    <div class="row gy-4">
+                        <input type="hidden" class="form-control" asp-for="formModel.id">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Tip Adı *</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.type_name" placeholder="Tip Adı">
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Üst Tip</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-control" asp-for="formModel.parent_1_id">
+
+                                        <option value="0">Üst Tip Seçin</option>
+
+                                        @foreach (var item in Model.list)
+                                        {
+                                            if (Model.formModel.parent_1_id == item.id)
+                                            {
+                                                <option selected value="@item.id">@item.type_name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.id">@item.type_name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <div class="row align-center" style="margin-top: 10px;">
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_name" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_name">Adı</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_summary" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_summary">Özet</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_image" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_image">Resim</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_seo_url" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_seo_url">Url</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_seo_title" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_seo_title">Seo Başlık</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_seo_description" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_seo_description">Seo Description</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_parent_1" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_parent_1">Üst Tip</label>
+                                        </div>
+                                    </div>
+                                     
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Tip Başlığı</label> 
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group"> 
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.parent_1_title" placeholder="Tip Başlığı">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr />
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_content_1" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_content_1">İçerik Alanı 1</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_content_2" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_content_2">İçerik Alanı 2</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_content_3" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_content_3">İçerik Alanı 3</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <hr />
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_content_4" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_content_4">İçerik Alanı 4</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_content_5" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_content_5">İçerik Alanı 5</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_description_image" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_description_image">Resim Description</label>
+                                        </div>
+                                    </div> 
+                                </div>
+
+                                <hr />
+
+                                <div class="form-group row">
+                                   
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_order_number" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_order_number">Sıra Numarası</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                            <input type="checkbox" asp-for="formModel.is_sss" class="custom-control-input">
+                                            <label class="custom-control-label" asp-for="formModel.is_sss">Dinamik Alanlar</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row submitBtnLayout">
+                            <div class="col-lg-12 ">
+                                <button type="submit" class="btn btn-secondary">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

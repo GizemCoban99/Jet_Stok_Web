@@ -1,0 +1,198 @@
+﻿@page
+@model WebApp.Pages.BlogModel
+@{
+    ViewData["Title"] = "E-Ticaret ve Pazaryerleri'nden en güncel bilgiler" +(Model.activePage==1?"":" > Sayfa "+Model.activePage);
+    ViewData["Description"] = "E-ticaret, entegrasyon ve dijital dünya hakkındaki en güncel bilgileri ve ipuçlarını takip edin." + (Model.activePage == 1 ? "" : " > Sayfa " + Model.activePage);
+    ViewData["Canonical"] = "https://www.jetstok.com/blogs" + (Model.activePage == 1 ? "" : "/" + Model.activePage);
+    var domainPath = "";
+#if DEBUG
+    domainPath="https://www.jetstok.com";
+#endif
+}
+@section HeaderContents {
+}
+   <main class="single-project pt-0 style-5">
+<main class="blog-page style-5 pt-0 color-4">
+    <section class="blog-slider pb-0">
+        <div class="section-head text-center style-5 mb-80 top-bg-gray">
+            <h1 class="mb-20">  <span class="headerSpanColor">Blog @(Model.activePage == 1 ? "" : " > Sayfa " + Model.activePage)</span> </h1>
+            <p>E-Ticaretin geleceği ve E-Ticaret'te başarı stratejileri için gereken bilgileri sayfamızdan takip edin.</p>
+        </div>
+     @*    <div class="container">
+            <div class="blog-details-slider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach (var item in Model.blogs.Take(5))
+                        {
+
+                            <div class="swiper-slide">
+                                <div class="content-card">
+                                    <div class="img overlay">
+                                        <img src="@(item.image.ToImagePath())" alt="@item.name">
+                                    </div>
+                                    <div class="info">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="cont">
+                                                    
+                                                    <h2 class="title text-white">
+                                                        <a href="/blog/@item.seo_url" title="@item.name">@item.name</a>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div> *@
+    </section>
+
+    
+   @*  <div class="container d-flex justify-content-center">
+        <div class="row">
+            <ul class="list-group" style="flex-direction: row">
+                @{
+                    var firstIsActive = Model.categoryId == 0 ? "active-category" : "";
+                }
+
+                <li class="list-group-item d-flex justify-content-between align-items-center @firstIsActive">
+                    <a asp-page="Blog" asp-route-category="">
+                        Tümü
+                    </a>
+                </li>
+                @foreach (var category in Model.blogListByCategory)
+                {
+                    var isActive = Model.categoryId == category.id ? "active-category" : "";
+                    <li class="list-group-item d-flex justify-content-between align-items-center @isActive">
+                        <a asp-page="Blog" asp-route-category="@category.seo_url">
+                            @category.name
+
+                        </a>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div> *@
+
+
+    <!-- ====== start Popular Posts ====== -->
+    <section class="popular-posts pt-50 pb-100 border-bottom brd-gray">
+        <div class="container">
+            @*             <h1 class="mb-80">  <span class="headerSpanColor">Son Bloglar </span> </h1>
+            *@
+            <div class="row gx-5">
+                @foreach (var item in Model.blogList)
+                {
+                    var imagePath = $"{domainPath}/upload/{item.image}";
+
+                    var url = $"/blog/{@item.seo_url}";
+                    <div class="col-lg-4">
+                        <div class="card border-0 bg-transparent rounded-0 mb-30 mb-lg-0 d-block">
+
+                            <a href="@url" title="@Html.Raw(item.name)" class="img radius-7 overflow-hidden img-cover">
+                                <img src="/images/loading-gif.gif" data-src="@imagePath" class="card-img-top" alt="@Html.Raw(item.name)">
+                            </a>
+                            <div class="card-body px-0">
+                                @* <small class="d-block date mt-10 fs-10px fw-bold">
+                            <a href="#" class="op-8">Posted on 3 Days ago</a>
+                            </small> *@
+                                <a href="@url" class="mt-10 blog-title" title="@item.name">
+                                    <strong style="font-size: 20px;font-weight:500;line-height:25px;">@Html.Raw(item.name)
+                                        </strong>
+                                </a>
+                                <p class="mt-2 op-8 blog-title-text">
+                                    @{
+                                        var summary = item.summary;
+                                        if (!string.IsNullOrEmpty(summary) && summary.Length > 120)
+                                        {
+                                            summary = summary.Substring(0, 120) + "...";
+                                        }
+                                    }
+                                    @Html.Raw(summary)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div class="border-0 bg-transparent rounded-0 mb-30 mb-lg-0 d-block">
+                        @if (Model.totalPage > 1)
+                        {
+                            <nav class="nav justify-content-center mt-5">
+                                <ul class="pagination justify-content-center">
+
+                                    @if (Model.activePage > 1)
+                                    {
+                                        int prev = Model.activePage - 1;
+                                        <li class="page-item">
+
+                                            <a class="page-link" href="/blogs/@prev.ToString()" tabindex="-1">
+                                                <i class="fas fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item disabled" style="opacity:0.5">
+                                            <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                                <i class="fas fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @for (int i = 1; i < Model.totalPage + 1; i++)
+                                    {
+                                        if (Model.activePage == i)
+                                        {
+                                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">@i</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="page-item"><a class="page-link" href="/blogs/@i.ToString()">@i</a></li>
+
+                                        }
+
+                                    }
+
+                                    @if (Model.totalPage > Model.activePage)
+                                    {
+                                        int next = Model.activePage + 1;
+                                        <li class="page-item">
+
+                                            <a class="page-link" href="/blogs/@next.ToString()">
+                                                <i class="fas fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item" style="opacity:0.5">
+                                            <a class="page-link" href="javascript:void(0)">
+                                                <i class="fas fa-angle-right"></i>
+                                            </a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </nav>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </section>
+
+</main>
+</main>

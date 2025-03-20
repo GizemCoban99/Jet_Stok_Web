@@ -1,0 +1,434 @@
+﻿@page
+@model WebApp.Pages.PricingEcommerceModel
+@{
+    ViewData["Title"] = "E-Ticaret Paket Fiyatları | E-Ticaret Paketleri";
+    ViewData["Description"] = "Fiyatlandırma: İşletmenizin ihtiyaçlarına en uygun e-ticaret ve entegrasyon paketleri ile bütçenizi koruyun. Hemen kendine uygun paketi seçebilirsin.";
+    ViewData["Canonical"] = "https://www.jetstok.com/e-ticaret-fiyatlari";
+    
+}
+
+@section HeaderContents{
+}
+
+<main class="blog-page style-5">
+
+<div class="section-head text-center mb-60 style-5 top-bg-gray">
+    <h1 class="mb-20"> <span class="headerSpanColor">E-Ticaret Paket Fiyatları </span> </h1>
+    <p>
+        E-Ticaret Paket Fiyatlarında en iyi fiyat garantisi ile paketinizi seçerek gönül rahatlığıyla Jet Stok'un ayrıcalıklı E-Ticaret dünyasına katılabilirsiniz.
+    </p>
+</div>
+
+<div class="container">
+    <div class="section-head style-4 mb-30">
+        <h3 class="text-center">
+            <span class="">Planlarımız</span>
+        </h3>
+    </div>
+    <div class="tabs">
+        <div class="entegrasyon-tab">
+            <a title="Pazaryeri Entegrasyon Fiyatları" href="~/fiyatlandirma">
+                <img src="/assets/img/entegrasyon.png" alt="Pazaryeri Entegrasyon Fiyatları" />
+                <p class="plan-text text-center">Pazaryeri Entegrasyon</p>
+            </a>
+        </div>
+        <div class="ecommerce-tab">
+            <a title="E-Ticaret Paket Fiyatları" href="~/e-ticaret-fiyatlari">
+                <img src="/assets/img/et-img.png" alt="E-Ticaret Paket Fiyatları" />
+                <p class="plan-text text-center">E-Ticaret</p>
+            </a>
+        </div>
+        @* <div class="dopshipping-tab">
+
+            <a href="~/dropshipping-fiyatlari">
+                <img src="/assets/img/dropship.png" />
+                <p class="plan-text text-center">Dropshipping</p>
+            </a>
+        </div> *@
+    </div>
+</div>
+
+
+<partial name="~/Pages/Shared/_Pricing.cshtml" model="Model.packages" />
+
+<div class="container ">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-wrapper">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="border:none !important;">
+                                <div class="calculator-content">
+                                    <div class="row head d-flex align-items-center justify-content-center">
+                                        <div class="col-lg-12 mb-3">
+                                            <i class="fas fa-calculator d-flex align-items-center justify-content-center" style="font-size: 3rem; color: #4e1c99;"></i>
+                                        </div>
+
+                                        <div class="col-lg-12 title"><center><h4>XML Fiyat Hesaplayıcı</h4></center></div>
+                                    </div>
+
+                                    <div class="content mt-3">
+                                        <div class="d-block align-items-center">
+                                            <div class="row d-flex">
+                                                <div class="col-md-3 mt-3">
+                                                    <select class="package-select form-select form-control" id="package-select">
+                                                        <option selected>Paket Seçiniz</option>
+                                                        @foreach (var item in Model.packages.packages.Where(q => q.id != 23 && q.id != 24))
+                                                        {
+                                                            <option value="@item.summary" id="@item.id">@item.name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 mt-3">
+                                                    <input class="form-control" id="totalXML" type="text" placeholder="Toplam XML Ürün Sayınız" data-mask="000">
+                                                </div>
+                                                <div class="col-md-3 mt-3">
+                                                    <input class="form-control" id="packagePrice" type="text" placeholder="Satın Aldığınız Paket Fiyatınız" data-mask="000" disabled>
+                                                </div>
+                                                <div class="col-md-3 mt-3" style="min-height:90px !important">
+                                                    <button type="button" class="btn bg-blue4 fw-bold text-white me-4 btn-customer-call calculator-btn" data-toggle="modal" data-target="#xmlModal" onclick="xmlCalculator();">
+                                                        Hesapla
+                                                    </button>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="text-center calculator-p" id="xml"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="projects style-7 section-padding mb-0 mt-5">
+    <div class="container">
+
+        <div class="row gx-5">
+            <div class="col-lg-4">
+                <div class="section-head style-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"> 
+                    <h2 class="mb-30"><span>E-Ticaret Entegrasyonu Alırken Nelere Dikkat Etmeliyiz?</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="text color-666 mb-20 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                    Pazaryeri Entegrasyonu alırken sadece bir yazılım kiralama veya satın alma yapmıyorsunuz. Tam anlamıyla işinizi büyütecek ve size kolaylık sağlayacak bir partner seçmiş oluyorsunuz. Bu sebeple seçeceğiniz entegrasyon firmasında fiyattan daha çok aşağıdaki kriterlere dikkat etmeniz gerekmektedir.
+                </div>
+                <div class="faq style-3 style-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <span class="accordion-header" id="heading2">
+                                <button class="accordion-button accordion-btn collapsed  colllapse-p" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Devamı
+                                </button>
+                            </span>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        <b> Entegrasyon alırken aşağıdaki husulara dikkat etmelisiniz;</b>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Amaç ve Hedefler</b> : Entegrasyonu ne amaçla kullanacağınızı ve hangi hedefleri taşıdığınızı belirlemek önemlidir.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Güvenlik</b> : Entegrasyonlar hassas verileri taşıdığından, güvenlik büyük bir öneme sahiptir. Verilerinizin güvenle saklandığı ve yedeklendiğinden emin olmalısınız.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Performans</b> : Entegrasyonun performansı sizin için çok önemlidir. Güncelleme aralıkları ve verileri doğru aralıklarla takip ettiğinden emin olmalısınız.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Eğitim</b> : Entegrasyonun nasıl çalıştığını çok iyi öğrenmeniz gerekir. İşlemleri ve operasyonunuzu doğru yönetmek adına öncelikle kendiniz tam olarak öğrenmelisiniz.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Destek</b> : Entegrasyonda destek ihtiyacınız olduğunda doğru destek almak çok önemlidir.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Not</b> : Jet Stok olarak sizlere güvenli, performanslı bir yazılım sunuyoruz. Ekibimiz eğitimi sürecinize ve destek ihtiyaçlarınızda her zaman yanınızda.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model.dynamicValues.Count > 0)
+{
+    <section class="faq section-padding style-4 mb-80">
+        <div class="container">
+            <div class="section-head text-center style-4">
+                <h2 class="mb-30"> Sıkça Sorulan <span> Sorular </span> </h2>
+            </div>
+            <div class="content">
+                <div class="faq style-3 style-4">
+                    <div class="accordion" id="accordionSt4">
+                        <div class="row gx-5">
+                            <div class="col-lg-12">
+                                @{
+                                    var coallepseItemIndex = 0;
+                                }
+                                @foreach (var item in Model.dynamicValues)
+                                {
+                                    coallepseItemIndex++;
+                                    <div class="accordion-item border-bottom rounded-0">
+                                        <h2 class="accordion-header" id="@("heading"+coallepseItemIndex)">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse" + coallepseItemIndex)" aria-expanded="false" aria-controls="collapse12">
+                                                @item.Title
+                                            </button>
+                                        </h2>
+                                        <div id="@("collapse" + coallepseItemIndex)" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading"+coallepseItemIndex)" data-bs-parent="#accordionSt4">
+                                            <div class="accordion-body">
+                                                @Html.Raw(item.Description)
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ }
+
+
+ <partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+@section Scripts{
+    <script>$(".package-select").change(function () {
+            var packagePrice = $("#package-select").val();
+            $("#packagePrice").val(packagePrice)
+        });
+
+        function xmlCalculator() {
+            debugger;
+            var totalXML = $("#totalXML").val();
+            var packagesPrice = $("#packagePrice").val();
+            var packageId = $("#package-select").find(':selected').attr("id");
+
+            if (packageId == 26) {
+                if ((totalXML == "" || totalXML == "Toplam XML ürün sayınız") || (packagesPrice == "" || packagesPrice == "Paketinizin ismini seçin")) {
+                    $("#xml").html("" + "Lütfen Ürün Sayınızı Giriniz ve Paket Seçimi Yapınız!" + "")
+
+                }
+                else if (totalXML > 15000) {
+                    var totalXml = $("#totalXML").val();
+                    var packagePrice = $("#packagePrice").val();
+                    var totalPackage = Math.ceil((packagePrice / 5) * 2);
+                    var xml = (totalXml - 15000);
+                    var totalPrice = (xml / 15000);
+                    var ceilPrice = Math.ceil(totalPrice);
+                    var result = totalPackage * ceilPrice;
+                    var total = Math.ceil(result + parseInt(packagePrice));
+                    $("#xml").html("" + "Bu paket için ödeyeceğiniz toplam fiyat" + " : " + total + " ₺" + "")
+                }
+                else {
+                    $("#xml").html("" + "Bu paket için ödeyeceğiniz toplam fiyat" + " : " + packagesPrice + " ₺" + "")
+                }
+            }
+            else {
+                if ((totalXML == "" || totalXML == "Toplam XML ürün sayınız") || (packagesPrice == "" || packagesPrice == "Paketinizin ismini seçin")) {
+                    $("#xml").html("" + "Lütfen Ürün Sayınızı Giriniz ve Paket Seçimi Yapınız!" + "")
+
+                }
+                else if (totalXML > 7500) {
+                    var totalXml = $("#totalXML").val();
+                    var packagePrice = $("#packagePrice").val();
+                    var totalPackage = Math.ceil((packagePrice / 5) * 2);
+                    var xml = (totalXml - 7500);
+                    var totalPrice = (xml / 7500);
+                    var ceilPrice = Math.ceil(totalPrice);
+                    var result = totalPackage * ceilPrice;
+                    var total = Math.ceil(result + parseInt(packagePrice));
+                    $("#xml").html("" + "Bu paket için ödeyeceğiniz toplam fiyat" + " : " + total + " ₺" + "")
+                }
+                else {
+                    $("#xml").html("" + "Bu paket için ödeyeceğiniz toplam fiyat" + " : " + packagesPrice + " ₺" + "")
+                }
+            }
+        }
+
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })</script>
+
+
+    @if (Model.fAQDynamicStructuredList.Count > 0)
+    {
+        @* var faq = @Html.Raw(Json.Serialize(Model.fAQStructuredList)); *@
+        <script type="application/ld+json">
+            {
+              "@@context": "https://schema.org",
+              "@@type": "FAQPage",
+              "mainEntity":  @Html.Raw(Model.FAQGoogle)
+            }
+        </script>
+
+    }
+
+    @* **** Paket Fiyatlarının Sabitlenmesi **** *@
+   @* <script>
+        $(window).scroll(function(){
+            var price = $('.fixed-head'),
+                item = $('.price-headItem'),
+                title = $('.price-fixTitle'),
+                headTitle = $('.headTitle-container'),
+                mobileItem = $('.ph-1'),
+                mobileItem2 = $('.ph-2'),
+                mobileItem3 = $('.ph-3'),
+                mobileItem4 = $('.ph-4'),
+                //priceFoot = $('.price-foot').offset().top,
+                /*priceBodyBottom = priceBody.offset().top + priceBody.outerHeight(),*/
+                scroll = $(window).scrollTop();
+
+            if ($(window).width() > 768) {
+                if (scroll >= 1200 && scroll <= 5800) {
+
+                    price.addClass('sticky');
+                    title.css('visibility', 'visible');
+                    title.css('text-align', 'center');
+                    headTitle.css('visibility', 'hidden');
+                }
+                else {
+                    price.removeClass('sticky');
+                    item.css('background-color', '');
+                    title.css('visibility', 'hidden');
+                    headTitle.css('visibility', '');
+                }
+            }else
+            {
+                // if (scroll >= 500 && scroll <= 800) {
+                //     mobileItem.addClass('mobile-fixed');
+                // }
+                // else if (scroll >= 1500 && scroll <= 1900) {
+                //     mobileItem2.addClass('mobile-fixed');
+                // }
+                // else if (scroll >= 2000 && scroll <= 2500) {
+                //     mobileItem3.addClass('mobile-fixed');
+                // }
+                // else if (scroll >= 3000 && scroll <= 3500) {
+                //     mobileItem4.addClass('mobile-fixed');
+                // }
+                // else {
+                //     mobileItem.removeClass('mobile-fixed');
+                //     mobileItem2.removeClass('mobile-fixed');
+                //     mobileItem3.removeClass('mobile-fixed');
+                //     mobileItem4.removeClass('mobile-fixed');
+                // }
+            }
+        });
+    </script> *@
+
+    <script>
+
+        function addSpanToThirdPackage() {
+        var spanElement = document.createElement('span');
+        spanElement.textContent = 'POPÜLER';
+        spanElement.classList.add('popular-title');
+
+        var divElements = document.getElementsByClassName('package-name');
+
+        // Sadece üçüncü div elementini seçer
+        var thirdDivElement = divElements[1];
+
+        // Üçüncü div elementinin parent elementini al
+        var parentElement = thirdDivElement.parentNode;
+
+        // Üçüncü div elementinin önüne span elementini ekler
+        parentElement.insertBefore(spanElement, thirdDivElement);
+
+        }
+        
+        addSpanToThirdPackage();
+    </script>
+
+    <script>
+        function ChangeColor() {
+            var divElements = document.getElementsByClassName('price-headItem');
+
+            var thirdDivElement = divElements[1];
+
+            thirdDivElement.classList.add('popular-package');
+        }
+        ChangeColor()
+    </script>
+
+    <script>
+        // Aktif bağlantıyı belirlemek için URL'yi kontrol eden bir fonksiyon
+        function setActiveTab() {
+            var currentLocation = window.location.pathname;
+            var links = document.querySelectorAll('.tabs a');
+
+            // Her bağlantıyı kontrol et
+            links.forEach(function (link) {
+                // Bağlantının href'si mevcut URL ile eşleşiyorsa
+                if (link.getAttribute('href') === currentLocation) {
+                    // Etkin sınıfı ekle
+                    link.parentElement.classList.add('active');
+                }
+            });
+        }
+
+        window.onload = setActiveTab;
+    </script>
+
+    <script>
+        function MobilPopularPackage() {
+            var divElements = document.querySelectorAll('.price-body-custom-mobile .content .price-head .price-headItem');
+            var spanElement = document.createElement('span');
+            spanElement.textContent = 'POPÜLER';
+            spanElement.classList.add('popular-title');
+
+            if (divElements.length >= 3) {
+                // Üçüncü price-headItem elementini bul
+                var thirdElement = null;
+                for (var i = 0; i < divElements.length; i++) {
+                    if (i === 1) {
+                        thirdElement = divElements[i];
+                        break;
+                    }
+                }
+                // Üçüncü price-headItem divine popular-package sınıfını ekle
+                if (thirdElement !== null) {
+                    thirdElement.classList.add('popular-package');
+                    thirdElement.appendChild(spanElement)
+                }
+            }
+        }
+        MobilPopularPackage();
+    </script>
+
+    <script>
+        if (window.location.pathname === '/e-ticaret-fiyatlari') {
+            var divElements = document.getElementsByClassName('price-headItem');
+
+            var firstDivElement = divElements[0];
+            var thirdDivElement = divElements[2];
+            thirdDivElement.classList.add('border-left-none');
+            thirdDivElement.classList.add('border-right-none');
+            firstDivElement.classList.add('border-right-none');
+        }
+    </script>
+}
+
+</main>

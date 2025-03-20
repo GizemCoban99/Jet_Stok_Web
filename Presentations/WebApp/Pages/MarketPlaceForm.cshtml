@@ -1,0 +1,76 @@
+﻿@page
+@model WebApp.Pages.MarketPlaceFormModel
+@{
+    ViewData["Canonical"] = "https://www.jetstok.com/pazaryeri-form";
+    ViewData["Title"] = "Pazaryeri Entegrasyonu Başvuru Formu";
+    ViewData["Description"] = "Pazaryeri entegrasyonu hakkında bilgi almak için bize bilgilerinizi bırakınız. Ekibimiz sizinle en kısa zamanda iletişime geçecektir.";
+}
+
+
+<section class="demo-form-section"> 
+    
+    <div class="demo-form-container">
+        <div class="demo-form-content">
+            <form asp-page="Form" method="POST" id="demo-form" class="demo-form">
+                <div class="demo-form-title">
+                    <h1>Pazaryeri Bilgi Formu</h1>
+                    <p>Jet stok ile Pazaryeri dünyasına adım atmak çok kolay. Formu doldurun, Sizi arayalım!</p>
+                </div>
+                <div class="form-group">
+                    <input asp-for="demoForm.Name" type="text" class="form-input" name="name" id="name" placeholder="Adınız" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="demoForm.Surname" type="text" class="form-input" name="surname" id="surname" placeholder="Soyadınız" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="demoForm.Email" type="email" class="form-input" name="email" id="email" placeholder="E-mail Adresiniz" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="demoForm.Phone" type="tel" class="form-input" name="Phone" id="Phone" placeholder="+90 ___ ___ __ __" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="demoForm.CompanyName" type="text" class="form-input" name="companyName" id="companyName" placeholder="Firma Adı" />
+                </div>
+                            
+                <div class="form-group">
+                    <input type="submit" name="submit" id="submit" class="form-submit" value="Gönder" />
+                </div>
+            </form>
+            <div id="alert" class="alert">
+            <span class="closebtn" onclick="closeAlert()">&times;</span>
+            Lütfen geçerli bir telefon numarası giriniz.
+        </div>
+        </div>
+        
+    </div>
+</section>
+
+
+<script>
+    
+
+    function showAlert() {
+        const alertBox = document.getElementById('alert');
+        alertBox.style.display = 'block';
+    }
+
+    // Alert kapatma fonksiyonu
+    function closeAlert() {
+        const alertBox = document.getElementById('alert');
+        alertBox.style.display = 'none';
+    }
+
+    // Form gönderilmeden önce telefon numarasının doğruluğunu kontrol edelim
+    document.getElementById('demo-form').addEventListener('submit', function (event) {
+        const phoneNumberInput = document.getElementById('Phone');
+        const phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Sadece rakamları al
+
+        // Telefon numarası doğruluğunu kontrol edelim
+        if (phoneNumber.length !== 12) {
+            showAlert();
+            event.preventDefault(); // Formun gönderilmesini engelleyelim
+        } else {
+
+        }
+    });
+</script>

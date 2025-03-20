@@ -1,0 +1,271 @@
+﻿@page
+@model WebApp.Pages.MarketplaceIntegrationDetailModel
+@{
+    ViewData["Title"] = Model.data.seo_title;
+    ViewData["Description"] = Model.data.seo_description;
+    ViewData["Canonical"] = "https://www.jetstok.com/" + Model.data.seo_url;
+     
+    var marketName = Model.data.name.Replace(" Pazaryeri", "").Replace(" Entegrasyonu", "").Replace(" (Yakında)", "");
+    var isMarketPlace = Model.data.parent_1_id == 183 ? true : false;
+    var isAccounting = Model.data.parent_1_id == 184 ? true : false;
+    var isWebSite = Model.data.parent_1_id == 212 ? true : false;
+    var domain = "";
+#if DEBUG
+    domain = $"https://www.jetstok.com";
+#endif
+}
+
+@section HeaderContents {
+}
+
+ <main class="single-project pt-0 style-5">
+
+<!-- ====== start about ====== -->
+<section class="blog style-6">
+    <div class="section-head  text-center style-5 top-bg-gray">
+        <h1 class="mb-20">  <span class="headerSpanColor">@Html.Raw(Model.data.name)</span> </h1>
+        <p>@Html.Raw(Model.data.seo_description) </p>
+    </div>
+</section>
+<!-- ====== end about ====== -->
+ 
+ 
+<div class="challenge section-padding style-5 overflow-hidden info-2 ">
+    <div class="container ">
+
+        <div class="row gx-5">
+            <div class="col-lg-4">
+                <div class="section-head style-4">
+                    <h2 class=""> <span>@marketName Nasıl Entegre Edilir? </span> </h2>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="inf">
+                    @Html.Raw(Model.data.content_2)
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ====== start challenge ====== -->
+<div class="challenge section-padding style-5 overflow-hidden bg-gray2">
+    <div class="container ">
+
+        <div class="row gx-5">
+            <div class="col-lg-4">
+              
+                <div>
+                    <img src="/images/loading-gif.gif" data-src="@domain/upload/@Model.data.image_description" alt="@Model.data.name Nasıl Çalışır" />
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="inf inf-container">
+                    @Html.Raw(Model.data.content_1)
+                </div> 
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@if (false)
+{
+    <div class="screenshots style-4">
+        <div class="screenshots-slider style-4">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="img">
+                            <img src="/assets/img/screenshots/1.png" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img">
+                            <img src="/assets/img/screenshots/2.png" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img">
+                            <img src="/assets/img/screenshots/3.jpg" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img">
+                            <img src="/assets/img/screenshots/4.png" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img">
+                            <img src="/assets/img/screenshots/5.png" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="/assets/img/screenshots/hand.png" alt="Jet Stok - Pazaryeri Entegrasyonu" class="mob-hand">
+    </div>
+}
+
+ <partial name="~/Pages/Shared/_Pricing.cshtml" model="Model.packages" />
+  
+<section class="projects style-6 p-0">
+    <div class="content srounded-0" style="padding:50px 0%;">
+        <div class="container ">
+                      
+                <div class="row text-center">
+                     @foreach (var item in Model.integrations)
+                        {
+                        <div class="col-lg-4">
+                            <div class="card border-0 bg-transparent rounded-0 mb-30 mb-lg-0 d-block" style="padding: 15px 15px 0 15px; text-align: center; border: 1px solid #e3e3e387 !important; border-radius: 3px !important; background:white !important;">
+                                <a href="@item.seo_url" title="@item.name" class="img radius-7 overflow-hidden img-cover">
+                                    <img class="card-img-top" src="/images/loading-gif.gif" data-src="@domain/upload/@item.image_description" alt="@Html.Raw(item.name)">        
+                                 </a>
+                                <div class="card-body px-0">
+                                    <a href="@item.seo_url" class="mt-10 blog-title" title="@Html.Raw(item.name)">
+                                        <b style="font-size: 18px;font-weight:500;">
+                                            @Html.Raw(item.name)
+                                        </b>
+                                    </a> 
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    <a href="/entegrasyonlar/pazaryeri-entegrasyonlari" title="Tümünü Görüntüle" class="btn btn-icon-circle rounded-pill btn-primary bg-white fw-bold mt-50" style="width:230px !important; height:max-content;">
+                        <small> Tümünü Görüntüle <i class="fas fa-long-arrow-alt-right bg-light"></i> </small>
+                    </a>
+                </div>
+                
+       
+           
+        </div>
+    </div>
+</section>
+@if (Model.dynamicValues.Count > 0)
+{
+    <section class="faq section-padding style-4 mb-80">
+        <div class="container">
+            <div class="section-head text-center style-4">
+                    <h3 class="mb-30" style="font-size:40px;">@marketName Sıkça Sorulan <span> Sorular </span> </h3>
+            </div>
+            <div class="content">
+                <div class="faq style-3 style-4">
+                    <div class="accordion" id="accordionSt4">
+                        <div class="row gx-5">
+                            <div class="col-lg-12">
+                                @{
+                                    var coallepseItemIndex = 0;
+                                }
+                                @foreach (var item in Model.dynamicValues)
+                                {
+                                    coallepseItemIndex++;
+                                    <div class="accordion-item border-bottom rounded-0">
+                                        <h2 class="accordion-header" id="@("heading"+coallepseItemIndex)">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@("collapse" + coallepseItemIndex)" aria-expanded="false" aria-controls="collapse12">
+                                                @Html.Raw(item.Title)
+                                            </button>
+                                        </h2>
+                                        <div id="@("collapse" + coallepseItemIndex)" class="accordion-collapse collapse rounded-0" aria-labelledby="@("heading"+coallepseItemIndex)" data-bs-parent="#accordionSt4">
+                                            <div class="accordion-body">
+                                                @Html.Raw(item.Description)
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@* <partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" /> *@
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+
+<div class="challenge section-padding style-5 pb-4 projects style-7" style="background:white;">
+    <div class="container">
+
+        <div class="row gx-5"> 
+            <div class="col-lg-12">
+                <div class="text color-666 mb-20 wow fadeInUp">
+                    @Html.Raw(Model.data.summary)
+                </div>
+                <div class="faq style-3 style-4 wow fadeInUp">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <span class="accordion-header" id="heading2">
+                                <button class="accordion-button accordion-btn collapsed  colllapse-p" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Devamı
+                                </button>
+                            </span>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @Html.Raw(Model.data.content_5)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model.fAQDynamicStructuredList.Count > 0)
+{
+    @* var faq = @Html.Raw(Json.Serialize(Model.fAQStructuredList)); *@
+    <script type="application/ld+json">
+        {
+          "@@context": "https://schema.org",
+          "@@type": "FAQPage",
+          "mainEntity":  @Html.Raw(Model.FAQGoogle)
+        }
+    </script>
+
+}
+
+@section Scripts {
+    <script>
+        function addSpanToThirdPackage() {
+            var spanElement = document.createElement('span');
+            spanElement.textContent = 'POPÜLER';
+            spanElement.classList.add('popular-title');
+
+            var divElements = document.getElementsByClassName('package-name');
+
+            // Sadece üçüncü div elementini seçer
+            var thirdDivElement = divElements[2];
+
+            // Üçüncü div elementinin parent elementini al
+            var parentElement = thirdDivElement.parentNode;
+
+            // Üçüncü div elementinin önüne span elementini ekler
+            parentElement.insertBefore(spanElement, thirdDivElement);
+
+        }
+
+        addSpanToThirdPackage();
+    </script>
+
+    <script>
+        function ChangeColor() {
+            var divElements = document.getElementsByClassName('price-headItem');
+
+            var thirdDivElement = divElements[2];
+
+            thirdDivElement.classList.add('popular-package');
+        }
+        ChangeColor()
+    </script>
+}
+
+ </main>

@@ -1,0 +1,473 @@
+﻿@page
+@model WebApp.Pages.ECommerceModel
+@{
+    ViewData["Title"] = "E-Ticaret Yazılımı | E-Ticaret Paketleri";
+    ViewData["Description"] = "En iyi E-Ticaret yazılımı Jet Stok ile Kusursuz E-Ticaret Web Siteni'ne sahip olun. En uygun E-Ticaret Paketleri için bize ulaşın.";
+    ViewData["Canonical"] = "https://www.jetstok.com/e-ticaret";
+    
+    var domain = "";
+#if DEBUG
+    domain = $"https://www.jetstok.com";
+#endif
+}
+
+ <main class="">
+@section HeaderContents{
+
+    <header class="style-4" style="padding:0px;">
+        <div id="home-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" onclick="setSliderItem(0)" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" onclick="setSliderItem(1)" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" onclick="setSliderItem(2)" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" onclick="setSliderItem(3)" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+
+                <div class="carousel-item active">
+                    <img src="/images/loading-gif.gif" data-src="/assets/slides/2.png" class="isWeb" alt="E-Ticaret Entegrasyonu">
+                        <img src="/images/loading-gif.gif" data-src="/assets/slides/m2.png" class="isMobile" alt="E-Ticaret Entegrasyonu">
+                    <div class="carousel-caption">
+                        @*  <h3>Image 2</h3>
+                    <p>Description for Image 2</p> *@
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <img src="/images/loading-gif.gif" data-src="/assets/slides/1.png" class="isWeb" alt="Pazaryeri Entegrasyonu">
+                        <img src="/images/loading-gif.gif" data-src="/assets/slides/m1.png" class="isMobile" alt="Pazaryeri Entegrasyonu">
+                    <div class="carousel-caption">
+                        @*    <h3>Image 1</h3>
+                    <p>Description for Image 1</p> *@
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                        <img src="/images/loading-gif.gif" data-src="/assets/slides/3.png" class="isWeb" alt="E-İhracat Entegrasyonu">
+                        <img src="/images/loading-gif.gif" data-src="/assets/slides/m3.png" class="isMobile" alt="E-İhracat Entegrasyonu">
+                    <div class="carousel-caption">
+                        @*  <h3>Image 3</h3>
+                    <p>Description for Image 3</p> *@
+                    </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="/images/loading-gif.gif" data-src="/assets/slides/5.png" class="isWeb" alt="Kargo Entegrasyonu">
+                    <img src="/images/loading-gif.gif" data-src="/assets/slides/m5.png" class="isMobile" alt="Kargo Entegrasyonu">
+                    <div class="carousel-caption">
+                        @*  <h3>Image 3</h3>
+                    <p>Description for Image 3</p> *@
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" id="carousel-prev" href="javascript:;" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" id="carousel-next" href="javascript:;" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
+    </header>
+}
+<section class="style-3 bg-gray2">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="section-head style-8 text-center mb-20">
+                <h2 style="padding-top: 13px;">
+                    <span>E-Ticaret Web Sitesi Kurulumu</span>
+                </h2>
+                <p class="mb-10">Sitenizden 48 saat içinde satışa başlayın.</p>
+                <div class="subtitle mb-10">
+                    <form asp-page="Index" method="POST" id="info-form" class="info-form">
+                        <input type="hidden" name="Source" value="E-ticaret">
+                        <div class="row">
+                            <div class="col-lg-5 mb-20 mt-1">
+                                <input type="text" name="Name" class="form-control" placeholder="Ad Soyad">
+                            </div>
+                            <div class="col-lg-5 mb-20 mt-1">
+                                <input type="text" name="Phone" id="Phone" class="form-control" placeholder="Telefon">
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" onclick="SendInfoForm()" class="btn rounded-pill bg-blue4 fw-bold text-white">
+                                    <span>Sizi Arayalım</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+ 
+<section class="testimonials style-4 pt-50 why-ecommerce-pt">
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-5 why-ecommerce-pt">
+                    <div class="section-head style-4">
+                        <h2 class="mb-30"><span> E-Ticaret'te Nasıl Başarılı Olunur? </span> </h2>
+                    </div>
+                    <p class="text mb-40">
+                        Ticari faaliyetlerinizi internet ortamına taşımanız ve ürünlerinizi daha geniş pazarlara ulaştırmanız için sizlere kaliteli <b>e-ticaret web sitesi</b> çözümleri sunuyoruz. İhtiyaçlarınız doğrultusunda özel e-ticaret yazılımı geliştiriyor ve yazılım desteği sağlıyoruz.
+                    </p>
+                    <div class="d-flex align-items-center mt-70">
+                        <a href="tel:05307383242" title="Hemen Ara" class="btn rounded-pill bg-blue4 fw-bold text-white me-4" target="_blank">
+                            <small>Hemen Ara</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 why-ecommerce-pt-60">
+                    <div class="testi-cards">
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/images/loading-gif.gif" data-src="/assets/img/testimonials/user4.png" alt="Kurumsallık">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h4>Kurumsallık</h4>
+                                <h6>
+                                    Uzman yazılımcılar ile geliştirilen yazılımlarla kurumsal imajınız ve marka bilinirliğiniz özgün çözümlerle ilerler.
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/images/loading-gif.gif" data-src="/assets/img/testimonials/user5.png" alt="Uzman Ekip">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h4>Uzman Ekip</h4>
+                                <h6>
+                                    Profesyonel ve tecrübeli Jet Stok ekibimiz ile tüm adımlar profesyonellikle atılır ve her detay danışıklı olarak ilerletilir.
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                    <img src="/images/loading-gif.gif" data-src="/assets/img/testimonials/user6.png" alt="Müşteri İletişimi">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h4>Müşteri İletişimi</h4>
+                                <h6>
+                                    Dijital pazarda sizlere, rekabete ayak uydurabilecek kalitede yazılım projeleri sağlıyoruz.
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="client_card">
+                            <div class="user_img">
+                                <img src="/images/loading-gif.gif" data-src="/assets/img/testimonials/user7.png" alt="Esnek Yapı">
+                            </div>
+                            <div class="inf_content why-ecommerce">
+                                <h4>Esnek Yapı</h4>
+                                <h6>
+                                    Sizlere sunduğumuz sınırsız destek ile ihtiyaç duyduğunuz güncellemeleri takip ederek dijital dünyadaki hacminizi artırıyoruz.
+                                </h6>
+                            </div>
+                        </div>
+                        <img src="/assets/img/contact_globe.svg" alt="Jet Stok - Pazaryeri Entegrasyonu" class="testi-globe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="testimonials style-8 section-padding  bg-gray2">
+    <div class="container">
+        <div class="section-head style-8 text-center">
+            <h2>
+                <span> Jet Stok Müşterileri Yorumları</span>
+            </h2>
+            <div class="subtitle mb-10">
+                <p></p>
+                @* <p>Müşterilerimiz bizimle.</p> *@
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                @foreach (var item in Model.comment.OrderBy(q => q.id).ToList())
+                {
+                    <div class="col-lg-4">
+                        <div class="testi-card customer-command-card">
+                            <div class="info">
+                                <p>@Html.Raw(item.summary)</p>
+                                <img src="/images/loading-gif.gif" data-src="assets/img/icons/qout8.png" alt="Jet Stok - Pazaryeri Entegrasyonu" class="icon">
+                            </div>
+                            <div class="author custom-command">
+                                <div class="img icon-60 rounded-circle overflow-hidden img-cover me-3 flex-shrink-0">
+                                    <img src="@domain/upload/@item.image" alt="Jet Stok - Pazaryeri Entegrasyonu">
+                                </div>
+                                <div class="inf">
+                                    <span>@item.name</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section class="clients style-4 bg-white pb-50 pt-100">
+    <div class="container">
+        <div class="section-head text-center style-4"> 
+            <h2 class="mb-30"><span>E-Ticaret Referanslarımız</span> </h2>
+        </div>
+        <div class="client-logos pb-70">
+            <div class="row align-items-center justify-content-center">
+            
+                <div class="col-0 col-lg-1 d-none d-lg-block"></div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="DSMART" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref1.png" alt="DSMART">
+                    </a>
+                </div>
+                @* <div class="col-4 col-lg-2">
+                <a href="javascript:;" class="img d-block">
+                <img src="/assets/img/logos/ref2.png" alt="">
+                </a>
+                </div>*@
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="N11" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref3.png" alt="N11">
+                    </a>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="EVİDEA" class="img d-block">
+                        <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref4.jpg" alt="EVİDEA">
+                    </a>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="NEYİVAR" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref5.png" alt="NEYİVAR">
+                    </a>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="KAMPEREST" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref6.png" alt="KAMPEREST">
+                    </a>
+                </div>
+                <div class="col-0 d-none d-lg-block col-lg-1"></div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="ATAŞEHİRTONER" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref7.png" alt="ATAŞEHİRTONER">
+                    </a>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="VİVOZ" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref8.png" alt="VİVOZ">
+                    </a>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="OVATASTEEL" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref9.png" alt="OVATASTEEL">
+                    </a>
+                </div>
+                @* <div class="col-4 col-lg-2">
+                    <a href="javascript:void(0);" title="HANXGAME" class="img d-block">
+                        <img src="/assets/img/logos/ref10.png" alt="HANXGAME">
+                    </a>
+                </div> *@
+                <div class="col-4 col-lg-2 d-none d-lg-block">
+                    <a href="javascript:void(0);" title="MERLİNİNKAZANI" class="img d-block">
+                            <img src="/images/loading-gif.gif" data-src="/assets/img/logos/ref11.png" alt="MERLİNİNKAZANI">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq section-padding style-4 pt-100 e-commerce">
+    <div class="container">
+        <div class="section-head text-center style-4">
+            <h2 class="mb-30"> Sıkça Sorulan <span> Sorular </span> </h2>
+        </div>
+        <div class="content">
+            <div class="faq style-3 style-4">
+                <div class="accordion" id="accordionSt4">
+                    <div class="row gx-5">
+                        <div class="col-lg-6">
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading11">
+                                    <button class="accordion-button rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                        E-Ticaret Nedir?
+                                    </button>
+                                </h2>
+                                <div id="collapse11" class="accordion-collapse collapse rounded-0" aria-labelledby="heading11" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Geleneksel ticaretin dijital ortamda yapılmasına e-ticaret denir. Burada zaman ve mekan kısıtlaması yoktur.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading12">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                        Neden E-Ticaret Sitesine Sahip Olmalıyım?
+                                    </button>
+                                </h2>
+                                <div id="collapse12" class="accordion-collapse collapse  rounded-0" aria-labelledby="heading12" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Site sahibi olmak fiziki mağaza sahibi olmaya göre hem daha az maliyetlidir hem de zaman ve mekan kısıtlaması olmaması açısından daha fazla müşteriye ulaşılır.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading13">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        Site Kurmak İçin Firma Olmak Zorunlu mudur?
+                                    </button>
+                                </h2>
+                                <div id="collapse13" class="accordion-collapse collapse rounded-0" aria-labelledby="heading13" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        E-ticaret web sitesi sahibi olmak için kayıtlı bir firma sahibi olmak zorunludur. Sanal pos kullanımı ve fatura kesimi için bu gereklidir.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                        Sitemden Hemen Satış Yapabilirmiyim?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse rounded-0" aria-labelledby="heading4" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Evet müşterileriniz hemen satın alım yapabilir. 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed rounded-0 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                       Siteme Nasıl Müşteri Çekebilirim?
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse rounded-0" aria-labelledby="heading5" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Sitenize müşteri çekmek için öncelikle içeriklerinizi doğru ve kaliteli olarak hazırlamanız gerekmektedir. Sonrasında ise reklam veya seo gibi çalışmalar yapabilirsiniz. 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-bottom rounded-0">
+                                <h2 class="accordion-header" id="heading6">
+                                    <button class="accordion-button collapsed py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                        Site Kurmanın Fiyatı Nedir?
+                                    </button>
+                                </h2>
+                                <div id="collapse6" class="accordion-collapse collapse rounded-0" aria-labelledby="heading6" data-bs-parent="#accordionSt4">
+                                    <div class="accordion-body">
+                                        Hizmeti hakkında daha fazla bilgi almak için iletişim kanallarımızdan <b>e-ticaret</b> departmanımıza ulaşabilirsiniz.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="challenge section-padding style-5 pb-4 projects">
+    <div class="container">
+
+        <div class="row gx-5">
+            <div class="col-lg-4">
+                <div class="section-head style-4 wow fadeInUp"> 
+                    <h1 class="mb-30"><span>E-Ticaret Web Sitesi</span></h1>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="text color-666 mb-20 wow fadeInUp">
+                    @Html.Raw(Model.data.summary)
+                </div>
+                <div class="faq style-3 style-4 wow fadeInUp">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <span class="accordion-header" id="heading2">
+                                <button class="accordion-button accordion-btn collapsed  colllapse-p" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Devamı
+                                </button>
+                            </span>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @Html.Raw(Model.data.content_1)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+<section class="contact section-padding pt-0 pb-80 pt-50 style-6">
+    <div class="section-head text-center style-4 mb-40"> 
+        <h2 class="mb-20"><span> Sizi Arayalım </span> </h2>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <form asp-page-handler="Contact" class="form" method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Name" class="form-control" placeholder="Adı Soyad" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Email" class="form-control" placeholder="Eposta Adresi" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="number" asp-for="contactForm.Phone" class="form-control" placeholder="Telefon Numarası" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Title" class="form-control" placeholder="Konu" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <textarea rows="5" asp-for="contactForm.Description" class="form-control" placeholder="Size nasıl yardımcı olabiliriz?"></textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-lg-12 text-center btn-contact" style="margin-top:25px;">
+                                <input type="submit" value="Sizi Arayalım" class="btn rounded-pill bg-blue4 fw-bold text-white me-4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @*<img src="/assets/img/icons/contact_a.png" alt="" class="contact_a">
+            <img src="/assets/img/icons/contact_message.png" alt="" class="contact_message">*@
+        </div>
+    </div>
+</section>
+
+ </main>

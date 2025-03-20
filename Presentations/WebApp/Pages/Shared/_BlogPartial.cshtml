@@ -1,0 +1,53 @@
+﻿@model List<EntityLayer.DTOs.GenericValueDTO>
+
+
+<section class="projects style-8 section-padding mb-0 mt-5" style="background-color: #f0eff5;">
+    <div class="container">
+        <div class="section-head style-8 text-center mb-80 wow fadeInUp">
+            <h2>
+                <span>Entegrasyon Blog </span>
+            </h2>
+            <div class="subtitle mb-10">
+                <p>E-Ticaret bilgilerini doğru ve güvenle öğrenin. Yararlı ipuçları ve en iyi uygulamalar için bloğa göz atın.</p>
+            </div>
+        </div>
+    </div>
+    <div class="blog style-6 pb-5">
+
+
+        <div class="container ">
+            <div class="content">
+                <div class="row text-center">
+                    @foreach (var item in Model.Take(3))
+                    {
+                        <div class="col-lg-4">
+                            <div class="card border-0 bg-transparent rounded-0 mb-30 mb-lg-0 d-block" style="padding: 15px 15px 0 15px; text-align: center; border: 1px solid #e3e3e387 !important; border-radius: 3px !important; background:white !important;">
+                                <a href="/blog/@item.seo_url" title="@@Html.Raw(item.name)" class="img radius-7 overflow-hidden img-cover">
+                                    <img class="card-img-top" src="/images/loading-gif.gif" data-src="@(item.image.ToImagePath())" alt="@Html.Raw(item.name)">        
+                                 </a>
+                                <div class="card-body px-0">
+                                    <a href="/blog/@item.seo_url" class="mt-10 blog-title" title="@Html.Raw(item.name)">
+                                        <b style="font-size: 18px;font-weight:500;">
+                                            @Html.Raw(item.name)
+                                        </b>
+                                    </a>
+                                    <p class="mt-2 op-8 blog-title-text" style="height:50px;">
+                                        @Html.Raw(item.summary)
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    <a href="/blogs" title="Tümünü Görüntüle" class="btn btn-icon-circle rounded-pill btn-primary bg-white fw-bold mt-50" style="width:230px !important">
+                        <small> Tümünü Görüntüle <i class="fas fa-long-arrow-alt-right bg-light"></i> </small>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</section>
+
+

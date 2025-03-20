@@ -1,0 +1,129 @@
+﻿@page
+@model WebApp.Pages.Settings.Role.RoleAddOrUpdateModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    Layout = "_AdminLayout";
+}
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h4 class="nk-block-title page-title">@Model.pageTitle</h4>
+                </div>
+                <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <li class="nk-block-tools-opt">
+                                    <a href="/PomeloAdmin/roles" title="Geri" class="btn btn-sm btn-primary">
+                                        <em class="icon ni ni-arrow-left"></em><span>Geri</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <form action="RoleAddOrUpdate" id="RoleAddOrUpdateForm" class="" autocomplete="off">
+                    <div class="row gy-4">
+                        <input type="hidden" class="form-control" asp-for="formModel.id">
+                        <input type="hidden" class="form-control" asp-for="formModel.permissions">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Rol Adı *</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.name" placeholder="Rol Adı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-01">Açıklama</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" asp-for="formModel.description" placeholder="Açıklama">
+                                </div>
+                            </div>
+                        </div>
+                        @*<span class="preview-title-lg overline-title">YETKİLENDİRME</span>
+                        <div class="row align-center">
+                        <div class="form-group">
+                        <div class="custom-control custom-control-sm custom-checkbox">
+                        <input onclick="changePermissions()" type="checkbox" class="custom-control-input" id="checkAll">
+                        <label class="custom-control-label" for="checkAll">Tümünü Seç</label>
+                        </div>
+                        </div>
+                        </div>*@
+                        @{
+                            var index = 0;
+                        }
+                        @foreach (var item in Model.permissions)
+                        {
+                            <div class="col-sm-12 permissionRow">
+                                <span class="preview-title-sm overline-title">@item.group_name</span>
+                                <div class="row align-center" style="margin-top: 10px;">
+
+                                    @for (int i = 0; i < item.permissions.Count; i++)
+                                    {
+                                        <div class="form-group row">
+                                            @foreach (var p in item.permissions.Skip(i).Take(4).ToList())
+                                            {
+                                                var isChecked = Model.activePermissions.Any(q => q == p.id);
+                                                <div class="col-md-3 col-sm-6">
+                                                    <div class="custom-control custom-control-sm custom-checkbox">
+                                                        <input onclick="changePermissions()" type="checkbox" @(isChecked ? "checked" : "") class="custom-control-input permissionCheck" value="@p.id" name="permission_array[@index]" id="permissio-@p.id">
+                                                        <label class="custom-control-label" for="permissio-@p.id">@p.name</label>
+                                                    </div>
+                                                </div>
+
+                                                index++;
+                                            }
+                                        </div>
+                                        i += 3;
+                                    }
+                                </div>
+                            </div>
+                        }
+                        <div class="row submitBtnLayout">
+                            <div class="col-lg-12 ">
+                                <button type="submit" class="btn btn-secondary">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        function changePermissions() {
+            var inps = $('.permissionCheck');
+            var checkedItem = "";
+            for (var i = 0; i < inps.length; i++) {
+                var inp = inps[i];
+                if ($(inp).is(":checked")) {
+                    if (checkedItem === "") {
+                        checkedItem = inp.value;
+                    }
+                    else {
+                        checkedItem += "," + inp.value;
+                    }
+                }
+            }
+
+            $("#formModel_permissions").val(checkedItem);
+        }
+    </script>
+
+}

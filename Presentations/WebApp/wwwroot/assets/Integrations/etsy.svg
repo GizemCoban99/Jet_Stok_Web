@@ -1,0 +1,27 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="52" height="52">
+	<title>ciceksepeti-svg</title>
+	<defs>
+		<filter x="-50%" y="-50%" width="200%" height="200%" id="f1" ><feDropShadow dx="-1.8369701987210297e-16" dy="3" stdDeviation="2.0833333333333335" flood-color="#000000" flood-opacity="0"/></filter>
+		<filter x="-50%" y="-50%" width="200%" height="200%" id="f2" ><feDropShadow dx="-1.8369701987210297e-16" dy="3" stdDeviation="2.0833333333333335" flood-color="#000000" flood-opacity="0"/></filter>
+		<image  width="36" height="17" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAARCAMAAACCaf60AAAAAXNSR0IB2cksfwAAAfJQTFRF9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgAAAAA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA81YA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgA9FgATTLpJwAAAKZ0Uk5TbqunpKawohIAGF/j/GdDRbzTDhTB+y81zwiDWBG7AZfUYw+4F6AGAx2b/YhJACiBo3JaU1Q0V2i1AF6/dcn/tp3XbyNQ3Cn1gBoyztis6HpVAgli6j6KG5RlBcVmfrkEIv6yLcS3JaHlMZN4ELos8j+FHNonE76PWUD6dtvRfGEZPeZ3iXEH74v5PLPi1q7Z5CHV7mCOavTLChY5DR5tcJo2wzPhrfiZaE4AAAGUSURBVHicY2BgZGIGARZWNnYOHICBk4ubh5ePj49fQFCIg4NdCKsiDmERUTEQS1xCkoNDShq7IhlZiCI5eTkOIQVF7IqUlEGKVFQ51NQ1NLW0daR1OfT02QwMZYyMTXhNOczMzU0YOIQsgIosraw5OGRsbO3sHZg5NBydnF1c3Yzc7Tw8Oby8fYxBirTsfQX8LEDm+tsFBAZxBIeEcqiFhVtG2EVycERFx8hBTZKLjYMqApL8dj788UA6ITFJjiM5JRzkplSQm9IMEIo40rXsJEwtOThsMzIts7ItgYpyciG+49DzhykKzGPiyS/g4AiwKywqLgH5rrQMqiisHKioAsgwq+SQs6qq5uBQr6mtY1IHKgrMq02sb+DkbGhsaubgtWvJEctpZWvjyGwHKe/o9OsChZNJd09Pbx8jY1//hAqOiZMmWySpTOmfOo05CxSTBdNnzAQpkvFUmQUCKpyeQRwcs2abzuGQ88wTm6s+E8gVFmCAhDguMM+cg2N+nxJ+RQtkF9YtWsyBX5HHEoml4pZgJgDJC16Jw36a+gAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		.s0 { filter: url(#f1);fill: #000000 } 
+		.s1 { filter: url(#f2);fill: #ffffff } 
+	</style>
+	<g id="Page-1">
+		<g id="Artboard">
+			<g id="Platform-Logo-Setleri-Vector">
+				<g id="ciceksepeti">
+					<g id="Rectangle">
+						<path id="path-1" class="s0" d="m4 23c0-12.2 9.8-22 22-22 12.2 0 22 9.8 22 22 0 12.2-9.8 22-22 22-12.2 0-22-9.8-22-22z"/>
+						<path id="path-1" class="s1" d="m4 23c0-12.2 9.8-22 22-22 12.2 0 22 9.8 22 22 0 12.2-9.8 22-22 22-12.2 0-22-9.8-22-22z"/>
+					</g>
+					<g id="ciceksepeti-icon">
+					</g>
+				</g>
+			</g>
+		</g>
+		<use id="Layer 4" href="#img1" x="8" y="15"/>
+	</g>
+</svg>

@@ -1,0 +1,409 @@
+﻿@page
+@model WebApp.Pages.Admin.GenericValue.GenericValueAddOrUpdateModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+    Layout = "_AdminLayout";
+}
+<style>
+    .custom-style-inputs {
+        margin-bottom: 20px;
+    }
+</style>
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h4 class="nk-block-title page-title">@Model.pageTitle</h4>
+                </div>
+                <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <li class="nk-block-tools-opt">
+                                    <a href="/PomeloAdmin/generic-values/@Model.formModel.type_id" title="Geri" class="btn btn-sm btn-primary">
+                                        <em class="icon ni ni-arrow-left"></em><span>Geri</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <form action="GenericValueAddOrUpdate" id="GenericValueAddOrUpdateForm" class="" autocomplete="off">
+                    <div class="row gy-4">
+                        <input type="hidden" class="form-control" asp-for="formModel.type_id">
+                        <input type="hidden" class="form-control" asp-for="formModel.id">
+
+                        @if (Model.type.is_parent_1 && Model.type.parent_1_id > 0)
+                        {
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="default-01">@Model.type.parent_1_title</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-control" asp-for="formModel.parent_1_id">
+
+                                            <option value="0">@Model.type.parent_1_title Seçin</option>
+
+                                            @foreach (var item in Model.parents)
+                                            {
+                                                if (Model.formModel.parent_1_id == item.id)
+                                                {
+                                                    <option selected value="@item.id">@item.name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.id">@item.name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+
+                        <div class="col-sm-12">
+                            <div class="row align-center" style="margin-top: 10px;">
+
+                                @if (Model.type.is_name)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Adı</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.name" placeholder="Adı">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_title)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Başlık</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.title" placeholder="Başlık">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_subtitle)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Alt Başlık</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.subtitle" placeholder="Alt Başlık">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_summary)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Özet</label>
+                                            <div class="form-control-wrap">
+                                                <textarea class="form-control" asp-for="formModel.summary" placeholder="Özet"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_image)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Resim</label>
+                                            <div class="form-control-wrap">
+                                                <input type="file" class="form-control" asp-for="formModel.image_file" placeholder="Resim">
+                                                <br>
+                                                @if (!string.IsNullOrEmpty(Model.formModel.image))
+                                                {
+                                                    <img src="@("/upload/"+Model.formModel.image)" height="100" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_description_image)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Resim</label>
+                                            <div class="form-control-wrap">
+                                                <input type="file" class="form-control" asp-for="formModel.image_description_file" placeholder="Resim">
+                                                <br>
+                                                @if (!string.IsNullOrEmpty(Model.formModel.image_description))
+                                                {
+                                                    <img src="@("/upload/"+Model.formModel.image_description)" width="100" height="100" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_image)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Banner Resim</label>
+                                            <div class="form-control-wrap">
+                                                <input type="file" class="form-control" asp-for="formModel.image_banner_file" placeholder="Resim">
+                                                <br>
+                                                @if (!string.IsNullOrEmpty(Model.formModel.image_banner))
+                                                {
+                                                    <img src="@("/upload/"+Model.formModel.image_banner)" height="100" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                <hr />
+
+                                @if (Model.type.is_seo_url)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Seo Url</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.seo_url" placeholder="Seo Url">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_seo_title)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Seo Title</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" asp-for="formModel.seo_title" placeholder="Seo Title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_seo_description)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Seo Description</label>
+                                            <div class="form-control-wrap">
+                                                <textarea class="form-control" asp-for="formModel.seo_description" placeholder="Seo Description"> </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_order_number)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">Sıra Numarası</label>
+                                            <div class="form-control-wrap">
+                                                <input type="number" class="form-control" asp-for="formModel.order_number" placeholder="Sıra Numarası">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                <hr />
+
+
+                                @if (Model.type.is_content_1)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">İçerik 1</label>
+                                            <div class="form-control-wrap">
+                                                <textarea id="summernote" asp-for="formModel.content_1"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.type.is_content_2)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">İçerik 2</label>
+                                            <div class="form-control-wrap">
+                                                <textarea id="summernotetwo" asp-for="formModel.content_2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_content_3)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">İçerik 3</label>
+                                            <div class="form-control-wrap">
+                                                <textarea id="summernotethree" asp-for="formModel.content_3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <br />
+                                @if (Model.type.is_content_4)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">İçerik 4</label>
+                                            <div class="form-control-wrap">
+                                                <textarea id="summernotefour" asp-for="formModel.content_4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_content_5)
+                                {
+                                    <div class="col-sm-12 custom-style-inputs">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-01">İçerik 5</label>
+                                            <div class="form-control-wrap">
+                                                <textarea id="summernotefive" asp-for="formModel.content_5"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.type.is_sss)
+                                {
+                                    <label class="form-label" for="default-01">Dynamic Data Infos</label> 
+                                    <br />
+                                    <br />
+
+                                    <ul class="nav nav-pills mb-3" id="dynamic-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active ms-4" id="dynamic-tab-1" data-bs-toggle="pill" data-bs-target="#dynamic-1" type="button" role="tab" aria-controls="dynamic-1" aria-selected="true">Dynamic Data 1</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="dynamic-tab-2" data-bs-toggle="pill" data-bs-target="#dynamic-2" type="button" role="tab" aria-controls="dynamic-2" aria-selected="false">Dynamic Data 2</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="dynamic-tab-3" data-bs-toggle="pill" data-bs-target="#dynamic-3" type="button" role="tab" aria-controls="dynamic-3" aria-selected="false">Dynamic Data 3</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="dynamic-tab-4" data-bs-toggle="pill" data-bs-target="#dynamic-4" type="button" role="tab" aria-controls="dynamic-4" aria-selected="false">Dynamic Data 4</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="dynamic-tab-5" data-bs-toggle="pill" data-bs-target="#dynamic-5" type="button" role="tab" aria-controls="dynamic-5" aria-selected="false">Dynamic Data 5</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="dynamic-tabContent">
+                                        <div class="tab-pane fade show active" id="dynamic-1" role="tabpanel" aria-labelledby="dynamic-tab-1">
+                                            <div class="col-sm-12 custom-style-inputs">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" asp-for="formModel.dynamic_title_1" placeholder="Dynamic Title 1">
+                                                    <br>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control" asp-for="formModel.dynamic_description_1" placeholder="Dynamic Description 1"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dynamic-2" role="tabpanel" aria-labelledby="dynamic-tab-2">
+                                            <div class="col-sm-12 custom-style-inputs">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" asp-for="formModel.dynamic_title_2" placeholder="Dynamic Title 2">
+                                                    <br>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control" asp-for="formModel.dynamic_description_2" placeholder="Dynamic Description 2"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dynamic-3" role="tabpanel" aria-labelledby="dynamic-tab-3">
+                                            <div class="col-sm-12 custom-style-inputs">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" asp-for="formModel.dynamic_title_3" placeholder="Dynamic Title 3">
+                                                    <br>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control" asp-for="formModel.dynamic_description_3" placeholder="Dynamic Description 3"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dynamic-4" role="tabpanel" aria-labelledby="dynamic-tab-4">
+                                            <div class="col-sm-12 custom-style-inputs">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" asp-for="formModel.dynamic_title_4" placeholder="Dynamic Title 4">
+                                                    <br>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control" asp-for="formModel.dynamic_description_4" placeholder="Dynamic Description 4"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dynamic-5" role="tabpanel" aria-labelledby="dynamic-tab-5">
+                                            <div class="col-sm-12 custom-style-inputs">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" asp-for="formModel.dynamic_title_5" placeholder="Dynamic Title 5">
+                                                    <br>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control" asp-for="formModel.dynamic_description_5" placeholder="Dynamic Description 5"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row submitBtnLayout">
+                            <div class="col-lg-12 ">
+                                <button type="submit" class="btn btn-secondary">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsPageEnd{
+    @*<link rel="stylesheet" href="/admin_assets/css/editors/summernote.css?ver=3.0.3">*@
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 200
+            });
+        });
+        $(document).ready(function () {
+            $('#summernotetwo').summernote({
+                height: 200
+            });
+        });
+        $(document).ready(function () {
+            $('#summernotethree').summernote({
+                height: 200
+            });
+        });
+        $(document).ready(function () {
+            $('#summernotefour').summernote({
+                height: 200
+            });
+        });
+        $(document).ready(function () {
+            $('#summernotefive').summernote({
+                height: 200
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    @*<script src="/admin_assets/js/libs/editors/summernote.js?ver=3.0.3"></script>*@
+    <script src="/admin_assets/js/editors.js?ver=3.0.3"></script>
+}

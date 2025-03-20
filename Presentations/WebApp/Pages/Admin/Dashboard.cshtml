@@ -1,0 +1,289 @@
+﻿@page
+@using System.Globalization
+@model WebApp.Pages.App.DashboardModel
+@{
+    ViewData["Title"] = Model.pageTitle; 
+    Layout = "_AdminLayout";
+}
+@*
+@if (Model.data != null)
+{ 
+
+    <div class="nk-block">
+        <div class="row g-gs">
+            <div class="col-xxl-12">
+                <div class="row g-gs">
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg6">
+                                <div class="card-inner">
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Sales Amount</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">@Model.data.monthly_sales_price.ConvertToDecimalTrFormat()</div>
+
+                                                </div>
+                                                <div class="info"><span>@monthName Total Sales Amount</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <em class="ni ni-wallet dashboardIconCustom border rounded p-2 mt-2 float-end"></em>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg6">
+                                <div class="card-inner">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">@monthName Number of Orders</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <a href="/orders/all" class="amount">@Model.data.monthly_sales_quantity</a>
+                                                </div>
+                                                <div class="info"><span> Total Order (@Model.data.total_order_count)</span></div>
+                                            </div>
+                                        </div>
+                                        <a href="/orders/all" class="col-md-4">
+                                            <em class="ni ni-bag dashboardIconCustom border rounded p-2 mt-2 float-end"></em>
+
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg6">
+                                <div class="card-inner">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Number of Products</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <a href="/products-0/all" class="amount">@Model.data.total_product_count</a>
+
+                                                </div>
+                                                <div class="info"><span>Total Number of Products</span></div>
+                                            </div>
+                                        </div>
+                                        <a href="/products-0/all" class="col-md-4">
+                                            <em class="ni ni-package dashboardIconCustom border rounded p-2 mt-2 float-end"></em>
+
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg6">
+                                <div class="card-inner">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Number of Keys</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">@Model.data.total_keys_count</div>
+
+                                                </div>
+                                                <div class="info"><span>The Total Number of Keys</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <em class="ni ni-list-index-fill dashboardIconCustom border rounded p-2 mt-2 float-end"></em>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg6">
+                                <div class="card-inner">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Pending B2B Orders</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <a href="/b2b-orders" class="amount">@Model.data.pending_b2b_order_count</a>
+
+                                                </div>
+                                                <div class="info"><span>The Total Pending B2B Orders</span></div>
+                                            </div>
+                                        </div>
+                                        <a href="/b2b-orders" class="col-md-4">
+                                            <em class="ni ni-bag dashboardIconCustom border rounded p-2 mt-2 float-end"></em>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-12 col-md-12">
+                <div class="card card-full">
+                    <div class="card-inner border-bottom mb-2">
+                        <div class="card-title-group">
+                            <div class="card-title">
+                                <h6 class="title">New Incoming Orders <small class="ml-1 fs-10px">The Last 5 Records</small></h6>
+                            </div>
+                            <div class="card-tools">
+                                <div class="dropdown">
+                                    <a href="/orders/all" class="link link-light link-sm">Show all of them</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nk-tb-list mt-n2">
+                        <div class="nk-tb-item nk-tb-head">
+                            <div class="nk-tb-col"><span>Order Information</span></div>
+                            <div class="nk-tb-col"><span>Price</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Status</span></div>
+                        </div>
+                        @if (Model.data.last_5_orders != null && Model.data.last_5_orders.Count > 0)
+                        {
+                            foreach (var item in Model.data.last_5_orders)
+                            {
+                                <div class="nk-tb-item">
+                                    <div class="nk-tb-col position-relative">
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="border rounded text-center py-1 me-3" style="width:100px">
+                                                <img src="@item.market_place_image" class="w-80" alt="@item.market_place_name">
+                                            </div>
+                                            <div>
+                                                <span class="tb-lead text-primary">#@item.order_number</span>
+                                                <span class="tb-lead">@item.order_date_string</span>
+                                            </div>
+                                        </div>
+                                        <a href="/order-detail/@item.id" class="stretched-link"></a>
+
+                                    </div>
+                                   
+                                    <div class="nk-tb-col position-relative">
+                                        <span class="tb-lead fw-bold">@item.total_price_string</span>
+                                        <a href="/order-detail/@item.id" class="stretched-link"></a>
+                                    </div>
+                                    <div class="nk-tb-col position-relative">
+                                        <span class="badge badge-dim text-uppercase" style="color:@(string.IsNullOrEmpty(item.state_color)?"black":item.state_color)">
+                                            @item.state_string
+                                        </span>
+                                        <a href="/order-detail/@item.id" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                    @if (Model.data.last_5_orders != null && Model.data.last_5_orders.Count <= 0 || Model.data.last_5_orders == null)
+                    {
+                        <div class="card text-center not-found w-100 py-5">
+                            <img src="/images/svg/not-found.svg" class="mb-4" height="120">
+                            <h6 class="text-soft">Could not find a record to list!</h6>
+                        </div>
+                    }
+                </div><!-- .card -->
+            </div>
+
+            @if (Model.data.market_place_report.Count > 0)
+            {
+                <div class="col-xxl-12 col-lg-12">
+                    <div class="card card-full overflow-hidden">
+                        <div class="nk-ecwg nk-ecwg4 h-100">
+                            <div class="card-inner flex-grow-1">
+                                <div class="card-title-group mb-4">
+                                    <div class="card-title">
+                                        <h6 class="title">Order Sources</h6>
+                                    </div>
+                                    <div class="card-tools">
+                                        @monthName
+                                    </div>
+                                </div>
+                                <div class="data-group">
+                                    <div class="nk-ecwg4-ck">
+                                        <canvas class="ecommerce-doughnut-s1" id="trafficSources"></canvas>
+                                    </div>
+                                    <ul class="nk-ecwg4-legends">
+                                        @foreach (var item in Model.data.market_place_report)
+                                        {
+                                            <li>
+                                                <div class="title">
+                                                    <span class="dot dot-lg sq" data-bg="@item.market_place_color"></span>
+                                                    <span>@item.market_place_name</span>
+                                                </div>
+                                                <div class="amount amount-xs">@item.sales_count</div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+             
+        </div>
+    </div>
+
+    <script>
+        var sourceLabels = [];
+        var sourceColors = [];
+        var sourceOrderCounts = [];
+        @foreach (var item in Model.data.market_place_report)
+        {
+            @:sourceLabels.push("@item.market_place_name");
+            @:sourceColors.push("@item.market_place_color");
+            @:sourceOrderCounts.push("@item.sales_count");
+        }
+                                        var trafficSources = {
+            labels: sourceLabels,
+            dataUnit: 'Marketplaces',
+            legend: false,
+            datasets: [{
+                borderColor: "#fff",
+                background: sourceColors,
+                data: sourceOrderCounts
+            }]
+        };
+    </script>
+}*@
+
+

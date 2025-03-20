@@ -1,0 +1,131 @@
+﻿@page
+@model WebApp.Pages.ContactModel
+@{
+    ViewData["Title"] = "İletişim & Bize Ulaşın - Jet Stok";
+    ViewData["Description"] = "Bize Ulaşın: Jetstok ekibi ile iletişime geçerek sorularınıza hızlı ve profesyonel destek alın. Bütün iletişim kanalları üzerinden bize ulaşabilirsiniz.";
+    ViewData["Canonical"] = "https://www.jetstok.com/bize-ulasin";
+ 
+}
+
+@section HeaderContents{
+}
+<!-- ====== start contact page ====== -->
+ <main class="contact-page style-5">
+
+<section class="contact section-padding pt-0 pb-80 pt-00 style-6">
+    <div class="section-head text-center top-bg-gray style-4 mb-40">
+        @*<small class="title_small">İlerişim</small>*@
+        <h1 class="mb-20">  <span class="headerSpanColor">Bizimle İletişime Geçin </span> </h1>
+        <p>İletişim talebinizi aldıktan sonra sizinle iletişime geçeceğiz</p>
+    </div>
+    <div class="container ">
+        <div class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+
+                    <form asp-page="Contact" class="form" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-20">
+                                    <select class="form-control js-select2 type" id="selectType" name="selectType">
+                                        <option value="0">Seçim Yapınız</option>
+                                        <option value="1">Şikayet</option>
+                                        <option value="2">Öneri</option>
+                                        <option value="3">Bilgi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Name" class="form-control" placeholder="Adınız" required>
+                                </div>
+                            </div>
+                           @*  <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Email" class="form-control" placeholder="Eposta Adresi" required>
+                                </div>
+                            </div> *@
+                            <div class="col-lg-6">
+                                <div class="form-group mb-20">
+                                    <input type="number" asp-for="contactForm.Phone" class="form-control" placeholder="Telefon Numaranız" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-20">
+                                    <input type="text" asp-for="contactForm.Title" class="form-control" placeholder="Konu" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <textarea rows="5" asp-for="contactForm.Description" class="form-control" placeholder="Size nasıl yardımcı olabiliriz?"></textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-lg-12 text-center btn-contact" style="margin-top:25px;">
+                                <input type="submit" value="Sizi Arayalım" class="btn rounded-pill bg-blue4 fw-bold text-white me-4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @*<img src="/assets/img/icons/contact_a.png" alt="" class="contact_a">
+            <img src="/assets/img/icons/contact_message.png" alt="" class="contact_message">*@
+        </div>
+    </div>
+</section>
+<section class="community section-padding pt-0 pb-80 style-5">
+    <div class="container">
+        <div class="content">
+            <div class="commun-card">
+
+                <div class="inf text-center">
+                    <div class="icon icon-45">
+                        <img src="/assets/img/icons/mail3d.png" alt="BİZE ULAŞIN">
+                    </div>
+                        <strong><a title="Bize Ulaşın" href="mailto:info@jetstok.com">info@jetstok.com </a></strong>
+                    <p>Sorularınıza hızlıca yanıt almak için bize mail atın.</p>
+                </div>
+            </div>
+            <div class="commun-card">
+                <div class="inf text-center">
+                    <div class="icon icon-45">
+                        <img src="/assets/img/icons/map3d.png" alt="Ataşehir İstanbul">
+                    </div>
+                    <strong>Ataşehir, İstanbul</strong>
+                    <p>
+                       Barbaros, Begonya Sk. No:7
+                    </p>
+                </div>
+            </div>
+          @*   <div class="commun-card">
+                <div class="inf text-center">
+                    <div class="icon icon-45">
+                        <img src="/assets/img/icons/map3d.png" alt="Gebze Kocaeli">
+                    </div>
+                    <h5>Gebze, Kocaeli</h5>
+                    <p>
+                        Barış Sb Mah. 5002 Sk. Bina No:4b Tübitak | MAM
+                    </p>
+                </div>
+            </div> *@
+            <div class="commun-card">
+                <div class="inf text-center">
+                    <div class="icon icon-45">
+                        <img src="/assets/img/icons/msg3d.png" alt="BİZE ULAŞIN">
+                    </div>
+                        <strong><a title="Bize Ulaşın" href="tel:05307383242">0530 738 32 42</a></strong>
+                    <p>Pazaryeri entegrasyonu için bizimle iletişim kurun.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="~/Pages/Shared/_FaqPartial.cshtml" model="Model.faqs" />
+<partial name="~/Pages/Shared/_BlogPartial.cshtml" model="Model.blogs" />
+
+@* <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.6839428769!2d29.167560089690586!3d41.032170144084695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caceed14c69077%3A0x6d43143084f7bf6c!2zTWVya2V6LCBBeWZlciBTb2thxJ_EsSBObzoxMyBEOjUsIDM0NzgyIMOHZWttZWvDtnkvxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1692169878979!5m2!1str!2str" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div> *@
+
+ </main>
